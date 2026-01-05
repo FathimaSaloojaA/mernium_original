@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { AlertTriangle, CheckCircle2, Send } from 'lucide-react'
+import { AlertTriangle, CheckCircle2, Send, Terminal, Sparkles } from 'lucide-react'
 
 const Apply = () => {
   const [formData, setFormData] = useState({
@@ -15,10 +15,8 @@ const Apply = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
     console.log('Form submitted:', formData)
     setSubmitted(true)
-    // Reset form after 3 seconds
     setTimeout(() => {
       setSubmitted(false)
       setFormData({
@@ -40,222 +38,209 @@ const Apply = () => {
   }
 
   return (
-    <div className="relative pt-20">
+    <div className="relative pt-28 pb-20 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="min-h-[40vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="min-h-[40vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-4xl mx-auto text-center space-y-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 font-mono text-xs uppercase tracking-widest"
+          >
+            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <span>OFFICIAL ADMISSION PORTAL</span>
+          </motion.div>
+
           <motion.h1
-            className="text-5xl md:text-6xl font-bold mb-6 text-gradient-emerald-gold"
+            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
           >
-            Apply as a Mernian
+            APPLY AS A <span className="text-gradient-emerald-gold">MERNIAN</span>
           </motion.h1>
           <motion.p
-            className="text-xl text-gray-300"
+            className="text-xl text-gray-300 font-sans max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ delay: 0.2 }}
           >
-            Start your transformation into a fearless, interview-ready developer
+            Start your transformation into a fearless, interview-ready software engineer.
           </motion.p>
         </div>
       </section>
 
-      {/* Warning Section */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
+      {/* Warning Notice */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <motion.div
-            className="glass rounded-2xl p-6 border-2 border-yellow-500/30 bg-yellow-500/5 flex items-start gap-4"
+            className="glass-card rounded-3xl p-6 sm:p-8 border border-amber-500/30 bg-amber-500/5 flex items-start space-x-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
           >
-            <AlertTriangle className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-2">Important Notice</h3>
-              <p className="text-gray-300">
-                <strong className="text-yellow-400">Not for shortcut seekers.</strong> This program requires 
-                commitment, daily practice, and a genuine desire to become interview-ready. We focus on 
-                readiness, not certificates. If you're looking for an easy path, this isn't for you.
+            <AlertTriangle className="w-6 h-6 text-amber-400 shrink-0 mt-1" />
+            <div className="space-y-1">
+              <h3 className="text-lg font-syne font-bold text-white">IMPORTANT DOCTRINE NOTICE</h3>
+              <p className="text-gray-300 text-sm font-sans leading-relaxed">
+                <strong className="text-amber-400">Not for shortcut seekers.</strong> This program requires intense dedication, daily production building, and a genuine drive for interview readiness. We do not sell certificates.
               </p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Discipline Explanation */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
+      {/* Expectations List */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <motion.div
-            className="glass rounded-2xl p-8 border border-emerald-500/20"
+            className="glass-card rounded-3xl p-8 border border-white/10 space-y-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl font-bold text-white mb-4">What We Expect</h2>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" />
-                <span>Daily attendance and active participation in live sessions</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" />
-                <span>Camera on during sessions for better engagement</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" />
-                <span>Daily coding practice and consistent effort</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" />
-                <span>Commitment to becoming interview-ready, not just completing a course</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" />
-                <span>Openness to feedback and continuous improvement</span>
-              </li>
-            </ul>
+            <h2 className="text-2xl font-syne font-bold text-white flex items-center gap-2">
+              <Terminal className="w-5 h-5 text-emerald-400" />
+              WHAT WE EXPECT FROM APPLICANTS
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-4 text-sm font-sans text-gray-300">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Daily live session attendance</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Camera on for real speech evaluation</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Daily production code commits</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Commitment to zero-fear readiness</span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Application Form */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           {submitted ? (
             <motion.div
-              className="glass rounded-2xl p-12 border-2 border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-gold-500/10 text-center"
+              className="glass-card rounded-3xl p-12 border border-emerald-500/40 bg-gradient-to-br from-emerald-500/10 to-amber-500/5 text-center space-y-4 shadow-2xl glow-emerald"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
             >
-              <CheckCircle2 className="w-16 h-16 text-emerald-400 mx-auto mb-6" />
-              <h2 className="text-3xl font-bold text-white mb-4">Application Submitted!</h2>
-              <p className="text-gray-300 text-lg">
-                We've received your application. Our team will review it and get back to you soon.
+              <CheckCircle2 className="w-16 h-16 text-emerald-400 mx-auto" />
+              <h2 className="text-3xl font-syne font-bold text-white">APPLICATION RECEIVED!</h2>
+              <p className="text-gray-300 text-sm font-sans">
+                Our admissions committee will review your profile and contact you via email within 24 hours.
               </p>
             </motion.div>
           ) : (
             <motion.form
-              className="glass rounded-2xl p-8 md:p-12 border-2 border-emerald-500/30"
               onSubmit={handleSubmit}
+              className="glass-card rounded-3xl p-8 sm:p-12 border border-white/10 space-y-6 shadow-2xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
             >
-              <div className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-white font-semibold mb-2">
-                    Full Name *
-                  </label>
+              <h2 className="text-3xl font-syne font-extrabold text-white">CANDIDATE ADMISSION FORM</h2>
+
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="space-y-2 font-mono text-xs">
+                  <label className="text-gray-300 uppercase tracking-wider">FULL NAME *</label>
                   <input
                     type="text"
-                    id="name"
                     name="name"
+                    required
                     value={formData.name}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-black/40 border border-emerald-500/30 rounded-lg text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
-                    placeholder="Enter your full name"
+                    placeholder="John Doe"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-400 font-sans transition-colors"
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-white font-semibold mb-2">
-                    Email Address *
-                  </label>
+                <div className="space-y-2 font-mono text-xs">
+                  <label className="text-gray-300 uppercase tracking-wider">EMAIL ADDRESS *</label>
                   <input
                     type="email"
-                    id="email"
                     name="email"
+                    required
                     value={formData.email}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-black/40 border border-emerald-500/30 rounded-lg text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
-                    placeholder="your.email@example.com"
+                    placeholder="john@example.com"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-400 font-sans transition-colors"
                   />
                 </div>
+              </div>
 
-                <div>
-                  <label htmlFor="phone" className="block text-white font-semibold mb-2">
-                    Phone Number *
-                  </label>
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="space-y-2 font-mono text-xs">
+                  <label className="text-gray-300 uppercase tracking-wider">PHONE NUMBER *</label>
                   <input
                     type="tel"
-                    id="phone"
                     name="phone"
+                    required
                     value={formData.phone}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-black/40 border border-emerald-500/30 rounded-lg text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
-                    placeholder="+1234567890"
+                    placeholder="+91 98765 43210"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-400 font-sans transition-colors"
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="batch" className="block text-white font-semibold mb-2">
-                    Preferred Batch *
-                  </label>
+                <div className="space-y-2 font-mono text-xs">
+                  <label className="text-gray-300 uppercase tracking-wider">PREFERRED BATCH *</label>
                   <select
-                    id="batch"
                     name="batch"
+                    required
                     value={formData.batch}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-black/40 border border-emerald-500/30 rounded-lg text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#0a0a0f] border border-white/15 text-white focus:outline-none focus:border-emerald-400 font-sans transition-colors"
                   >
-                    <option value="">Select a batch</option>
-                    <option value="international">International</option>
-                    <option value="school">School (7th+)</option>
-                    <option value="kerala">Kerala / Normal</option>
+                    <option value="">Select a batch...</option>
+                    <option value="cohort-06">Cohort 06 — May 1, 2026 (Weekday)</option>
+                    <option value="cohort-07">Cohort 07 — June 15, 2026 (Weekend)</option>
                   </select>
                 </div>
-
-                <div>
-                  <label htmlFor="background" className="block text-white font-semibold mb-2">
-                    Background / Experience
-                  </label>
-                  <textarea
-                    id="background"
-                    name="background"
-                    value={formData.background}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full px-4 py-3 bg-black/40 border border-emerald-500/30 rounded-lg text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all resize-none"
-                    placeholder="Tell us about your programming background, if any"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="motivation" className="block text-white font-semibold mb-2">
-                    Why do you want to join MERNIUM? *
-                  </label>
-                  <textarea
-                    id="motivation"
-                    name="motivation"
-                    value={formData.motivation}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 bg-black/40 border border-emerald-500/30 rounded-lg text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all resize-none"
-                    placeholder="Share your motivation and goals"
-                  />
-                </div>
-
-                <motion.button
-                  type="submit"
-                  className="w-full px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full font-semibold text-lg glow-emerald-strong hover:from-emerald-400 hover:to-emerald-500 transition-all flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Submit Application
-                  <Send size={20} />
-                </motion.button>
               </div>
+
+              <div className="space-y-2 font-mono text-xs">
+                <label className="text-gray-300 uppercase tracking-wider">YOUR CODING BACKGROUND *</label>
+                <textarea
+                  name="background"
+                  required
+                  rows={3}
+                  value={formData.background}
+                  onChange={handleChange}
+                  placeholder="Describe your current tech stack, experience, and what you have built..."
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-400 font-sans transition-colors"
+                />
+              </div>
+
+              <div className="space-y-2 font-mono text-xs">
+                <label className="text-gray-300 uppercase tracking-wider">WHY DO YOU WANT TO BECOME A MERNIAN? *</label>
+                <textarea
+                  name="motivation"
+                  required
+                  rows={3}
+                  value={formData.motivation}
+                  onChange={handleChange}
+                  placeholder="What is your main goal for taking technical interviews?"
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-400 font-sans transition-colors"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 text-black font-syne font-bold text-base uppercase tracking-wider shadow-xl glow-emerald flex items-center justify-center space-x-2 hover:scale-[1.02] transition-all"
+                data-cursor="button"
+              >
+                <span>SUBMIT ADMISSION APPLICATION</span>
+                <Send className="w-5 h-5" />
+              </button>
             </motion.form>
           )}
         </div>

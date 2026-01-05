@@ -1,227 +1,83 @@
 import { motion } from 'framer-motion'
-import { Languages, Mic, Eye, Volume2, User, DollarSign, HelpCircle, Sparkles } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { MessageSquare, Mic, ArrowRight } from 'lucide-react'
 
 const CommunicationTraining = () => {
   return (
-    <div className="relative pt-20">
-      {/* Hero Section */}
-      <section className="min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+    <div className="relative pt-28 pb-20 overflow-x-hidden">
+      {/* Hero */}
+      <section className="min-h-[50vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 font-mono text-xs uppercase tracking-widest"
+          >
+            <Mic className="w-4 h-4 text-amber-400" />
+            <span>SPEECH &amp; CONFIDENCE DOCTRINE</span>
+          </motion.div>
+
           <motion.h1
-            className="text-5xl md:text-6xl font-bold mb-6 text-gradient-emerald-gold"
+            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
           >
-            Communication & Confidence Training
+            COMMUNICATION <span className="text-gradient-emerald-gold">MASTERY</span>
           </motion.h1>
+
           <motion.p
-            className="text-xl text-gray-300"
+            className="text-xl text-gray-300 font-sans max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ delay: 0.2 }}
           >
-            Your fear will be wiped out. You will become a completely new, job-ready person.
+            Code is only 50% of the interview. The other 50% is how clearly and confidently you articulate your engineering solutions.
           </motion.p>
         </div>
       </section>
 
-      {/* Promise Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            className="glass rounded-3xl p-12 border-2 border-gold-500/30 bg-gradient-to-br from-gold-500/10 to-emerald-500/10 text-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <Sparkles className="w-16 h-16 text-gold-400 mx-auto mb-6" />
-            <p className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
-              Your fear will be wiped out.
-            </p>
-            <p className="text-3xl md:text-4xl font-bold text-gradient-emerald-gold">
-              You will become a completely new, job-ready person.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* English Training Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black/40">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <Languages className="w-16 h-16 text-emerald-400 mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-bold text-gradient-emerald-gold mb-6">
-              English Training
-            </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Daily speaking practice to build confidence in technical communication
-            </p>
-          </motion.div>
-
+      {/* Pillars */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-16">
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: Mic,
-                title: 'Daily Speaking',
-                description: 'Regular speaking practice to build fluency and confidence in English communication.',
+                title: 'Technical Speech Structure',
+                desc: 'Learn the exact framework senior engineers use to explain complex async logic without rambling.',
               },
               {
-                icon: Languages,
-                title: 'Technical Explanation',
-                description: 'Learn to explain complex technical concepts clearly and effectively in English.',
+                title: 'Mock Q&A Pressure Drills',
+                desc: 'Practice answering unexpected follow-up questions from interviewers without losing composure.',
               },
               {
-                icon: Volume2,
-                title: 'Sentence Structuring',
-                description: 'Master sentence formation, grammar, and clear articulation of thoughts.',
+                title: 'Recorded Audio Analysis',
+                desc: 'Review your speech recordings with coaches to eliminate filler words and hesitation.',
               },
-            ].map((item, index) => {
-              const Icon = item.icon
-              return (
-                <motion.div
-                  key={item.title}
-                  className="glass rounded-2xl p-8 border border-emerald-500/20 text-center"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.05 }}
-                >
-                  <Icon className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-white mb-4">{item.title}</h3>
-                  <p className="text-gray-300">{item.description}</p>
-                </motion.div>
-              )
-            })}
+            ].map((pillar, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="glass-card rounded-3xl p-8 border border-white/10 glass-card-hover space-y-4"
+              >
+                <div className="p-3 rounded-2xl bg-amber-500/10 text-amber-400 w-fit">
+                  <MessageSquare className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-syne font-bold text-white">{pillar.title}</h3>
+                <p className="text-gray-300 text-sm font-sans leading-relaxed">{pillar.desc}</p>
+              </motion.div>
+            ))}
           </div>
-        </div>
-      </section>
 
-      {/* Confidence Training Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <Sparkles className="w-16 h-16 text-gold-400 mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-bold text-gradient-emerald-gold mb-6">
-              Confidence Training
-            </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Build unshakeable confidence through body language, voice control, and presence
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Eye,
-                title: 'Body Language',
-                description: 'Master confident posture, gestures, and non-verbal communication.',
-              },
-              {
-                icon: Eye,
-                title: 'Eye Contact',
-                description: 'Build confidence in maintaining eye contact during conversations.',
-              },
-              {
-                icon: Volume2,
-                title: 'Voice Control',
-                description: 'Learn to modulate your voice, pace, and tone for maximum impact.',
-              },
-              {
-                icon: Mic,
-                title: 'Speaking Drills',
-                description: 'Practice speaking in various scenarios to build natural confidence.',
-              },
-            ].map((item, index) => {
-              const Icon = item.icon
-              return (
-                <motion.div
-                  key={item.title}
-                  className="glass rounded-2xl p-6 border border-gold-500/20"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                >
-                  <Icon className="w-10 h-10 text-gold-400 mb-4" />
-                  <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-                  <p className="text-gray-400 text-sm">{item.description}</p>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* HR Training Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black/40">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <User className="w-16 h-16 text-emerald-400 mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-bold text-gradient-emerald-gold mb-6">
-              HR Training
-            </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Prepare for the human side of interviews
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: User,
-                title: 'Self-Introduction',
-                description: 'Craft and deliver a compelling self-introduction that makes a lasting impression.',
-              },
-              {
-                icon: DollarSign,
-                title: 'Salary Discussion',
-                description: 'Learn to negotiate salary confidently and professionally.',
-              },
-              {
-                icon: HelpCircle,
-                title: 'Tough HR Questions',
-                description: 'Prepare for challenging questions about weaknesses, failures, and career goals.',
-              },
-            ].map((item, index) => {
-              const Icon = item.icon
-              return (
-                <motion.div
-                  key={item.title}
-                  className="glass rounded-2xl p-8 border border-emerald-500/20"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                >
-                  <Icon className="w-12 h-12 text-emerald-400 mb-4" />
-                  <h3 className="text-2xl font-semibold text-white mb-4">{item.title}</h3>
-                  <p className="text-gray-300 text-lg">{item.description}</p>
-                </motion.div>
-              )
-            })}
+          <div className="text-center pt-8">
+            <Link to="/apply" data-cursor="button">
+              <button className="px-8 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
+                <span>ENROLL IN SPEECH DRILLS</span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </Link>
           </div>
         </div>
       </section>

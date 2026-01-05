@@ -1,217 +1,110 @@
 import { motion } from 'framer-motion'
-import { Globe, GraduationCap, MapPin, CheckCircle2, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { Calendar, Clock, Users, Zap } from 'lucide-react'
+
+const batches = [
+  {
+    name: 'COHORT 06 — INTERVIEW ACCELERATOR',
+    start: 'MAY 1, 2026',
+    schedule: 'MON - FRI (7:00 PM - 9:30 PM)',
+    status: 'ADMISSIONS OPEN',
+    capacity: '18 / 25 SEATS FILLED',
+    tag: 'MOST POPULAR',
+  },
+  {
+    name: 'COHORT 07 — FULL STACK & SYSTEM DESIGN',
+    start: 'JUNE 15, 2026',
+    schedule: 'SAT & SUN (10:00 AM - 3:00 PM)',
+    status: 'EARLY BIRD OPEN',
+    capacity: '8 / 25 SEATS FILLED',
+    tag: 'WEEKEND TRACK',
+  },
+]
 
 const Batches = () => {
   return (
-    <div className="relative pt-20">
-      {/* Hero Section */}
-      <section className="min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+    <div className="relative pt-28 pb-20 overflow-x-hidden">
+      {/* Hero */}
+      <section className="min-h-[50vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 font-mono text-xs uppercase tracking-widest"
+          >
+            <Calendar className="w-4 h-4 text-emerald-400" />
+            <span>LIMITED COHORT CAPACITY</span>
+          </motion.div>
+
           <motion.h1
-            className="text-5xl md:text-6xl font-bold mb-6 text-gradient-emerald-gold"
+            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
           >
-            Batches
+            ACTIVE <span className="text-gradient-emerald-gold">BATCH SCHEDULES</span>
           </motion.h1>
+
           <motion.p
-            className="text-xl text-gray-300"
+            className="text-xl text-gray-300 font-sans max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ delay: 0.2 }}
           >
-            Choose the batch that fits your journey
+            We strictly limit cohort sizes to 25 builders to guarantee individual code reviews and mock interview attention.
           </motion.p>
         </div>
       </section>
 
       {/* Batches Grid */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Globe,
-                title: 'International',
-                description: 'For students worldwide',
-                color: 'emerald',
-                eligibility: [
-                  'Students from any country',
-                  'Fluent in English',
-                  'Commitment to daily practice',
-                  'Stable internet connection',
-                ],
-                trainingStyle: [
-                  'Global timezone support',
-                  'International curriculum',
-                  'Flexible scheduling',
-                  'Diverse community',
-                ],
-                expectations: [
-                  'Daily attendance required',
-                  'Camera on during sessions',
-                  'Active participation',
-                  'Interview-focused approach',
-                ],
-              },
-              {
-                icon: GraduationCap,
-                title: 'School (7th+)',
-                description: 'For young learners',
-                color: 'gold',
-                eligibility: [
-                  'Students from 7th grade onwards',
-                  'Basic computer knowledge',
-                  'Parental support',
-                  'Time management skills',
-                ],
-                trainingStyle: [
-                  'Age-appropriate pacing',
-                  'School-friendly schedule',
-                  'Early start advantage',
-                  'Foundation building',
-                ],
-                expectations: [
-                  'Balance school and training',
-                  'Regular practice',
-                  'Parent involvement',
-                  'Long-term commitment',
-                ],
-              },
-              {
-                icon: MapPin,
-                title: 'Kerala / Normal',
-                description: 'For local students',
-                color: 'emerald',
-                eligibility: [
-                  'Students from Kerala or India',
-                  'Basic programming interest',
-                  'Commitment to learning',
-                  'Availability for live sessions',
-                ],
-                trainingStyle: [
-                  'Regional timings',
-                  'Local support',
-                  'Community focused',
-                  'Cultural context',
-                ],
-                expectations: [
-                  'Consistent attendance',
-                  'Daily coding practice',
-                  'Interview preparation',
-                  'MERNMADE readiness',
-                ],
-              },
-            ].map((batch, index) => {
-              const Icon = batch.icon
-              const iconBgClass = batch.color === 'emerald' 
-                ? 'bg-gradient-to-br from-emerald-500/20 to-emerald-600/20' 
-                : 'bg-gradient-to-br from-gold-500/20 to-gold-600/20'
-              const iconColorClass = batch.color === 'emerald' ? 'text-emerald-400' : 'text-gold-400'
-              const buttonBgClass = batch.color === 'emerald'
-                ? 'bg-gradient-to-r from-emerald-500 to-emerald-600'
-                : 'bg-gradient-to-r from-gold-500 to-gold-600'
-              return (
-                <motion.div
-                  key={batch.title}
-                  className="glass rounded-2xl p-8 border-2 border-emerald-500/20 hover:border-emerald-500/40 transition-all"
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                >
-                  <div className={`w-16 h-16 rounded-full ${iconBgClass} flex items-center justify-center mb-6`}>
-                    <Icon className={`w-8 h-8 ${iconColorClass}`} />
-                  </div>
-                  <h2 className="text-3xl font-bold text-white mb-2">{batch.title}</h2>
-                  <p className="text-emerald-400 mb-8">{batch.description}</p>
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto space-y-8">
+          {batches.map((batch, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="glass-card rounded-3xl p-8 sm:p-10 border border-emerald-500/30 glass-card-hover flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+            >
+              <div className="space-y-3 max-w-2xl">
+                <div className="flex items-center space-x-3 font-mono text-xs">
+                  <span className="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30 uppercase">
+                    {batch.status}
+                  </span>
+                  <span className="text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+                    {batch.tag}
+                  </span>
+                </div>
 
-                  {/* Eligibility */}
-                  <div className="mb-8">
-                    <h3 className="text-xl font-semibold text-white mb-4">Eligibility</h3>
-                    <ul className="space-y-2">
-                      {batch.eligibility.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-gray-300">
-                          <CheckCircle2 size={16} className="text-emerald-400 flex-shrink-0 mt-1" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <h3 className="text-2xl sm:text-3xl font-syne font-extrabold text-white">
+                  {batch.name}
+                </h3>
 
-                  {/* Training Style */}
-                  <div className="mb-8">
-                    <h3 className="text-xl font-semibold text-white mb-4">Training Style</h3>
-                    <ul className="space-y-2">
-                      {batch.trainingStyle.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-gray-300">
-                          <CheckCircle2 size={16} className="text-emerald-400 flex-shrink-0 mt-1" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className="flex flex-wrap gap-6 font-mono text-xs text-gray-300 pt-2">
+                  <span className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-emerald-400" />
+                    STARTS: {batch.start}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-emerald-400" />
+                    {batch.schedule}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Users className="w-4 h-4 text-amber-400" />
+                    {batch.capacity}
+                  </span>
+                </div>
+              </div>
 
-                  {/* Expectations */}
-                  <div className="mb-8">
-                    <h3 className="text-xl font-semibold text-white mb-4">Expectations</h3>
-                    <ul className="space-y-2">
-                      {batch.expectations.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-gray-300">
-                          <CheckCircle2 size={16} className="text-emerald-400 flex-shrink-0 mt-1" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <Link to="/apply">
-                    <motion.button
-                      className={`w-full px-6 py-3 ${buttonBgClass} text-white rounded-full font-semibold hover:scale-105 transition-all flex items-center justify-center gap-2`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Apply Now
-                      <ArrowRight size={18} />
-                    </motion.button>
-                  </Link>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black/40">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            className="glass rounded-3xl p-12 border-2 border-emerald-500/30"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Start Your Journey?
-            </h2>
-            <p className="text-xl text-gray-300 mb-8">
-              Choose your batch and begin your transformation into a fearless, interview-ready developer.
-            </p>
-            <Link to="/apply">
-              <motion.button
-                className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full font-semibold text-lg glow-emerald-strong hover:from-emerald-400 hover:to-emerald-500 transition-all flex items-center gap-2 mx-auto"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Check Eligibility & Apply
-                <ArrowRight size={20} />
-              </motion.button>
-            </Link>
-          </motion.div>
+              <Link to="/apply" data-cursor="button">
+                <button className="px-6 py-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-syne font-bold text-sm tracking-wider uppercase flex items-center space-x-2 transition-all shadow-lg glow-emerald">
+                  <span>RESERVE SEAT</span>
+                  <Zap className="w-4 h-4" />
+                </button>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </section>
     </div>

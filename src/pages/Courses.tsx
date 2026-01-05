@@ -1,280 +1,141 @@
 import { motion } from 'framer-motion'
-import { Code, Database, Globe, Layers, ArrowRight } from 'lucide-react'
+import { Database, Globe, Layers, ArrowRight, CheckCircle2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const Courses = () => {
   return (
-    <div className="relative pt-20">
+    <div className="relative pt-28 pb-20 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="min-h-[50vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 font-mono text-xs uppercase tracking-widest"
+          >
+            <Layers className="w-4 h-4 text-emerald-400" />
+            <span>05 // PRODUCTION CURRICULUM</span>
+          </motion.div>
+
           <motion.h1
-            className="text-5xl md:text-6xl font-bold mb-6 text-gradient-emerald-gold"
+            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
           >
-            Courses / Curriculum
+            MERN STACK &amp; <span className="text-gradient-emerald-gold">INTERVIEW MAPPING</span>
           </motion.h1>
+
           <motion.p
-            className="text-xl text-gray-300"
+            className="text-xl text-gray-300 font-sans max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ delay: 0.2 }}
           >
-            MERN Stack with real projects and interview mapping
+            Every single topic taught is directly mapped to system architecture, production code quality, and senior interview questions.
           </motion.p>
         </div>
       </section>
 
-      {/* Teaching Method Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
+      {/* Teaching Method Header Pill */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
-            className="glass rounded-3xl p-12 border-2 border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-gold-500/10 text-center mb-16"
+            className="glass-card rounded-3xl p-8 sm:p-10 border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 via-transparent to-amber-500/5 text-center space-y-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
           >
-            <Layers className="w-16 h-16 text-emerald-400 mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Teaching Method
-            </h2>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-xl text-gray-300">
-              <span className="px-6 py-3 bg-emerald-500/20 rounded-full border border-emerald-500/30">
-                What it is
+            <h2 className="text-2xl sm:text-3xl font-syne font-bold text-white">THE 3-TIER TEACHING FORMULA</h2>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm font-mono text-gray-200">
+              <span className="px-5 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/40 text-emerald-300">
+                1. WHAT IT IS
               </span>
-              <ArrowRight className="w-6 h-6 text-emerald-400" />
-              <span className="px-6 py-3 bg-emerald-500/20 rounded-full border border-emerald-500/30">
-                Why it exists
+              <ArrowRight className="w-5 h-5 text-emerald-400 hidden md:block" />
+              <span className="px-5 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/40 text-emerald-300">
+                2. WHY IT EXISTS &amp; TRADEOFFS
               </span>
-              <ArrowRight className="w-6 h-6 text-emerald-400" />
-              <span className="px-6 py-3 bg-emerald-500/20 rounded-full border border-emerald-500/30">
-                How interviewers ask it
+              <ArrowRight className="w-5 h-5 text-emerald-400 hidden md:block" />
+              <span className="px-5 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/40 text-emerald-300">
+                3. HOW SENIOR INTERVIEWERS ASK IT
               </span>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* MERN Stack Overview */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black/40">
-        <div className="max-w-7xl mx-auto">
+      {/* Frontend & Backend Breakdown */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+          {/* Frontend Module */}
           <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="glass-card rounded-3xl p-8 border border-white/10 glass-card-hover space-y-6"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gradient-emerald-gold mb-6">
-              MERN Stack
-            </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Complete full-stack development with frontend and backend
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-12 mb-16">
-            {/* Frontend */}
-            <motion.div
-              className="glass rounded-2xl p-8 border-2 border-emerald-500/30"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <Globe className="w-16 h-16 text-emerald-400 mb-6" />
-              <h3 className="text-3xl font-bold text-white mb-6">Frontend</h3>
-              <div className="space-y-4">
-                {[
-                  'React.js fundamentals',
-                  'State management',
-                  'Hooks and advanced patterns',
-                  'Routing and navigation',
-                  'Component architecture',
-                  'UI/UX best practices',
-                  'Performance optimization',
-                  'Real-world projects',
-                ].map((topic, index) => (
-                  <motion.div
-                    key={topic}
-                    className="flex items-center gap-3"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                  >
-                    <div className="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0" />
-                    <span className="text-gray-300 text-lg">{topic}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Backend */}
-            <motion.div
-              className="glass rounded-2xl p-8 border-2 border-emerald-500/30"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <Database className="w-16 h-16 text-emerald-400 mb-6" />
-              <h3 className="text-3xl font-bold text-white mb-6">Backend</h3>
-              <div className="space-y-4">
-                {[
-                  'Node.js fundamentals',
-                  'Express.js framework',
-                  'RESTful APIs',
-                  'Database design (MongoDB)',
-                  'Authentication & authorization',
-                  'Middleware and security',
-                  'API optimization',
-                  'Real-world projects',
-                ].map((topic, index) => (
-                  <motion.div
-                    key={topic}
-                    className="flex items-center gap-3"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                  >
-                    <div className="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0" />
-                    <span className="text-gray-300 text-lg">{topic}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Real Projects Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <Code className="w-16 h-16 text-emerald-400 mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-bold text-gradient-emerald-gold mb-6">
-              Real Projects
-            </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Build projects that showcase real skills, not just tutorials
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                title: 'E-Commerce Platform',
-                description: 'Full-stack e-commerce with payment integration, user management, and admin panel.',
-              },
-              {
-                title: 'Social Media App',
-                description: 'Build a social platform with real-time features, authentication, and media handling.',
-              },
-              {
-                title: 'Project Management Tool',
-                description: 'Create a comprehensive project management system with teams, tasks, and analytics.',
-              },
-            ].map((project, index) => (
-              <motion.div
-                key={project.title}
-                className="glass rounded-2xl p-8 border border-emerald-500/20"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10, scale: 1.02 }}
-              >
-                <h3 className="text-2xl font-semibold text-white mb-4">{project.title}</h3>
-                <p className="text-gray-300 text-lg">{project.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Interview Mapping Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black/40">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gradient-emerald-gold mb-6">
-              Interview Mapping
-            </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Every topic is mapped to real interview questions
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="glass rounded-2xl p-12 border-2 border-emerald-500/30 max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-xl text-gray-300 text-center mb-8">
-              For every concept we teach, you'll learn:
-            </p>
-            <div className="space-y-4">
+            <div className="flex items-center space-x-3 text-emerald-400">
+              <Globe className="w-8 h-8" />
+              <h3 className="text-3xl font-syne font-extrabold text-white">FRONTEND CORE</h3>
+            </div>
+            <div className="grid grid-cols-1 gap-3">
               {[
-                'How interviewers ask about this topic',
-                'Common variations of questions',
-                'Expected answer structure',
-                'Edge cases and advanced scenarios',
-                'Related follow-up questions',
-              ].map((point, index) => (
-                <motion.div
-                  key={point}
-                  className="flex items-start gap-4"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-emerald-400 to-gold-400 flex items-center justify-center flex-shrink-0 mt-1">
-                    <div className="w-2 h-2 rounded-full bg-black" />
-                  </div>
-                  <span className="text-gray-300 text-lg">{point}</span>
-                </motion.div>
+                'React 19 fundamentals & Fiber reconciler',
+                'State management architectures (Zustand / Redux Toolkit)',
+                'Advanced Custom Hooks & performance profiling',
+                'React Router DOM v7 & nested layouts',
+                'Component design patterns & accessibility',
+                'Tailwind CSS & high-end WebGL canvas integration',
+                'Lighthouse score optimization & code splitting',
+                'Production web app deployments',
+              ].map((topic, index) => (
+                <div key={index} className="flex items-center space-x-3 text-gray-300 text-sm font-sans">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>{topic}</span>
+                </div>
               ))}
             </div>
           </motion.div>
 
+          {/* Backend Module */}
           <motion.div
-            className="mt-16 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="glass-card rounded-3xl p-8 border border-white/10 glass-card-hover space-y-6"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
           >
-            <Link to="/apply">
-              <motion.button
-                className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full font-semibold text-lg glow-emerald-strong hover:from-emerald-400 hover:to-emerald-500 transition-all flex items-center gap-2 mx-auto"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Start Learning
-                <ArrowRight size={20} />
-              </motion.button>
-            </Link>
+            <div className="flex items-center space-x-3 text-emerald-400">
+              <Database className="w-8 h-8" />
+              <h3 className="text-3xl font-syne font-extrabold text-white">BACKEND CORE</h3>
+            </div>
+            <div className="grid grid-cols-1 gap-3">
+              {[
+                'Node.js Event Loop, streams, & buffer internals',
+                'Express.js middleware & rate limiting',
+                'RESTful API architecture & versioning',
+                'MongoDB document schemas & indexing strategies',
+                'JWT & OAuth2 authentication security',
+                'Aggregations, pipelines, & transaction logic',
+                'Redis caching & memory management',
+                'Docker containerization & AWS deployment',
+              ].map((topic, index) => (
+                <div key={index} className="flex items-center space-x-3 text-gray-300 text-sm font-sans">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>{topic}</span>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-12 text-center">
+        <Link to="/apply" data-cursor="button">
+          <button className="px-8 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
+            <span>ENROLL IN FULL CURRICULUM</span>
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        </Link>
       </section>
     </div>
   )

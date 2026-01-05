@@ -1,34 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-black text-white antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
-    width: 100%;
-  overflow-x: hidden;
+  :root {
+    --bg-ink: #09090B;
+    --paper-white: #F2EFE7;
+    --acid-green: #C7FF3D;
+    --cobalt-blue: #5146E5;
+    --silver-muted: #B8B8B2;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+
+  html {
+    background-color: #09090B;
+    color: #F2EFE7;
+    scroll-behavior: initial;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #09090B;
+    color: #F2EFE7;
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::selection {
+    background-color: #C7FF3D;
+    color: #09090B;
   }
 }
 
+/* Custom Experimental Utilities */
 @layer utilities {
-  .text-gradient-emerald-gold {
-    @apply bg-gradient-to-r from-emerald-400 to-gold-400 bg-clip-text text-transparent;
+  .text-syne {
+    font-family: 'Syne', sans-serif;
   }
-  
-  .glass {
-    @apply backdrop-blur-md bg-black/20 border border-white/10;
+
+  .text-mono {
+    font-family: 'JetBrains Mono', monospace;
   }
-  
-  .glow-emerald {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+
+  .text-outline-acid {
+    -webkit-text-stroke: 1.5px #C7FF3D;
+    color: transparent;
   }
-  
-  .glow-gold {
-    box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+
+  .text-outline-paper {
+    -webkit-text-stroke: 1.5px rgba(242, 239, 231, 0.4);
+    color: transparent;
   }
+
+  .text-outline-thick {
+    -webkit-text-stroke: 3px #F2EFE7;
+    color: transparent;
+  }
+
+  .text-acid-gradient {
+    background: linear-gradient(135deg, #F2EFE7 0%, #C7FF3D 60%, #5146E5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Experimental Fragment Layering */
+  .fragment-layer {
+    position: relative;
+    mix-blend-mode: difference;
+  }
+
+  .glass-panel-raw {
+    background: rgba(242, 239, 231, 0.03);
+    backdrop-filter: blur(12px);
+    border-left: 2px solid rgba(199, 255, 61, 0.4);
+  }
+
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Noise Overlay Texture */
+  .noise-bg {
+    background-image: radial-gradient(rgba(199, 255, 61, 0.08) 1px, transparent 0);
+    background-size: 32px 32px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #09090B;
+}
+::-webkit-scrollbar-thumb {
+  background: #C7FF3D;
 }

@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import FloatingRobot from './components/FloatingRobot'
-import AnimatedBackground from './components/AnimatedBackground'
+import { CursorProvider } from './components/cursor/CustomCursor'
+import { SmoothScroll } from './components/scroll/SmoothScroll'
+import { PageTransition } from './components/transitions/PageTransition'
+import Navbar from './components/navigation/Navbar'
+import Footer from './components/footer/Footer'
+import FloatingAssistant from './components/assistant/FloatingAssistant'
 
 import Home from './pages/Home'
 import About from './pages/About'
@@ -20,28 +22,33 @@ import Contact from './pages/Contact'
 function App() {
   return (
     <Router>
-      <div className="relative min-h-screen bg-black">
-        <AnimatedBackground />
-        <Navbar />
-        <main className="relative z-10">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/mernmade" element={<Mernmade />} />
-            <Route path="/how-it-works" element={<HowItWorks />} />
-            <Route path="/interview-training" element={<InterviewTraining />} />
-            <Route path="/communication-training" element={<CommunicationTraining />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/batches" element={<Batches />} />
-            <Route path="/students" element={<Students />} />
-            <Route path="/teachers" element={<Teachers />} />
-            <Route path="/apply" element={<Apply />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-        <FloatingRobot />
-      </div>
+      <CursorProvider>
+        <SmoothScroll>
+          <div className="relative min-h-screen bg-[#050508] text-[#F4F4F6] overflow-x-hidden">
+            <Navbar />
+            <main className="relative z-10">
+              <PageTransition>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/mernmade" element={<Mernmade />} />
+                  <Route path="/how-it-works" element={<HowItWorks />} />
+                  <Route path="/interview-training" element={<InterviewTraining />} />
+                  <Route path="/communication-training" element={<CommunicationTraining />} />
+                  <Route path="/courses" element={<Courses />} />
+                  <Route path="/batches" element={<Batches />} />
+                  <Route path="/students" element={<Students />} />
+                  <Route path="/teachers" element={<Teachers />} />
+                  <Route path="/apply" element={<Apply />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Routes>
+              </PageTransition>
+            </main>
+            <Footer />
+            <FloatingAssistant />
+          </div>
+        </SmoothScroll>
+      </CursorProvider>
     </Router>
   )
 }
