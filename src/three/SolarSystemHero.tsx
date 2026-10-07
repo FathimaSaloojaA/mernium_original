@@ -27,7 +27,7 @@ function CentralStellarSun() {
   const sunRef = useRef<THREE.Mesh>(null!)
   const coronaRef = useRef<THREE.Mesh>(null!)
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (sunRef.current) {
       sunRef.current.rotation.y += delta * 0.2
     }
@@ -72,7 +72,7 @@ function CentralStellarSun() {
 function OrbitingPlanets() {
   const orbitsGroupRef = useRef<THREE.Group>(null!)
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (orbitsGroupRef.current) {
       orbitsGroupRef.current.rotation.y += delta * 0.05
     }
@@ -91,7 +91,7 @@ function SinglePlanet({ data }: { data: PlanetData }) {
   const planetRef = useRef<THREE.Mesh>(null!)
   const orbitAngleRef = useRef(Math.random() * Math.PI * 2)
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     orbitAngleRef.current += delta * data.speed * 0.4
     const x = Math.cos(orbitAngleRef.current) * data.distance
     const z = Math.sin(orbitAngleRef.current) * data.distance

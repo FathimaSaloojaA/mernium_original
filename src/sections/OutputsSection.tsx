@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Target, CheckCircle2, ArrowRight, ShieldCheck, Zap } from 'lucide-react'
+import { Target,  ArrowRight, ShieldCheck, Zap } from 'lucide-react'
 
 export const OutputsSection = () => {
   return (
