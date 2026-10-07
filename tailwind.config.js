@@ -7,25 +7,34 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: {
-          DEFAULT: '#09090B',
-          50: '#18181b',
-          900: '#09090B',
+        void: {
+          DEFAULT: '#07080D',
+          900: '#07080D',
         },
-        paper: {
-          DEFAULT: '#F2EFE7',
+        deepspace: {
+          DEFAULT: '#0D1020',
+        },
+        warmwhite: {
+          DEFAULT: '#F4F1E8',
           muted: '#B8B8B2',
         },
         acid: {
           DEFAULT: '#C7FF3D',
-          hover: '#b0f020',
-          glow: 'rgba(199, 255, 61, 0.4)',
+          hover: '#B2F020',
+          glow: 'rgba(199, 255, 61, 0.5)',
         },
-        cobalt: {
-          DEFAULT: '#5146E5',
-          glow: 'rgba(81, 70, 229, 0.4)',
+        violet: {
+          DEFAULT: '#7657FF',
+          glow: 'rgba(118, 87, 255, 0.4)',
         },
-        silver: '#B8B8B2',
+        cyan: {
+          DEFAULT: '#42DFFF',
+          glow: 'rgba(66, 223, 255, 0.4)',
+        },
+        magenta: {
+          DEFAULT: '#C83CFF',
+          glow: 'rgba(200, 60, 255, 0.4)',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -33,12 +42,11 @@ export default {
         syne: ['Syne', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
-      backgroundImage: {
-        'gradient-acid-cobalt': 'linear-gradient(135deg, #C7FF3D 0%, #5146E5 100%)',
-      },
       boxShadow: {
         'acid-glow': '0 0 35px rgba(199, 255, 61, 0.4)',
-        'cobalt-glow': '0 0 35px rgba(81, 70, 229, 0.4)',
+        'violet-glow': '0 0 35px rgba(118, 87, 255, 0.4)',
+        'cyan-glow': '0 0 35px rgba(66, 223, 255, 0.4)',
+        'magenta-glow': '0 0 35px rgba(200, 60, 255, 0.4)',
       },
     },
   },
