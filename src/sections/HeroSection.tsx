@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, Terminal, Compass } from 'lucide-react'
-import { HeroWorld } from '../three/HeroWorld'
+import { NeuralCore } from '../three/NeuralCore'
 import { useMagnetic } from '../hooks/useMagnetic'
 import { useScrollVelocity } from '../hooks/useScrollVelocity'
 
@@ -24,9 +24,9 @@ export const HeroSection = () => {
       <div className="absolute top-1/3 left-10 w-[500px] h-[500px] bg-acid/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[600px] h-[600px] bg-cobalt/15 rounded-full blur-[180px] pointer-events-none" />
 
-      {/* Embedded 3D WebGL Canvas (Bleeds across full viewport width) */}
-      <div className="absolute inset-0 z-0 opacity-85 pointer-events-auto">
-        <HeroWorld />
+      {/* Neural Core 3D scene (decorative, never intercepts input) */}
+      <div className="absolute inset-x-0 top-0 h-full max-h-[120vh] z-0 pointer-events-none">
+        <NeuralCore />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pointer-events-none">
