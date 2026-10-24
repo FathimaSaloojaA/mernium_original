@@ -1,6 +1,16 @@
 ﻿import { motion } from 'framer-motion'
 import { Award, CheckCircle2, XCircle, ArrowRight, Shield, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { ReadinessEmblem } from '../components/visuals/ReadinessEmblem'
+
+const CRITERIA = [
+  { title: 'System Architecture', desc: 'Ability to explain database indexing, API rate limiting, & cache strategies under pressure.' },
+  { title: 'Clean TypeScript Code', desc: 'Writing maintainable, production-level full-stack TypeScript code with zero shortcuts.' },
+  { title: 'Speech & Clarity', desc: 'Explaining technical decisions to senior engineering managers with absolute poise.' },
+  { title: 'Live Code Debugging', desc: 'Fixing complex state bugs or async errors live in front of evaluators within minutes.' },
+  { title: 'Project Ownership', desc: 'Architecting a full production web application end-to-end with real database sharding.' },
+  { title: 'Zero Interview Fear', desc: 'Entering tech rounds with complete confidence and zero test anxiety.' },
+]
 
 const Mernmade = () => {
   return (
@@ -89,6 +99,8 @@ const Mernmade = () => {
             })}
           </div>
 
+          <ReadinessEmblem criteria={CRITERIA.map((c) => c.title)} />
+
           {/* MERNMADE Criteria */}
           <motion.div
             className="glass-card rounded-3xl p-8 sm:p-12 border border-[#59ACB7]/30 space-y-8"
@@ -102,14 +114,7 @@ const Mernmade = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { title: 'System Architecture', desc: 'Ability to explain database indexing, API rate limiting, & cache strategies under pressure.' },
-                { title: 'Clean TypeScript Code', desc: 'Writing maintainable, production-level full-stack TypeScript code with zero shortcuts.' },
-                { title: 'Speech & Clarity', desc: 'Explaining technical decisions to senior engineering managers with absolute poise.' },
-                { title: 'Live Code Debugging', desc: 'Fixing complex state bugs or async errors live in front of evaluators within minutes.' },
-                { title: 'Project Ownership', desc: 'Architecting a full production web application end-to-end with real database sharding.' },
-                { title: 'Zero Interview Fear', desc: 'Entering tech rounds with complete confidence and zero test anxiety.' },
-              ].map((crit, cIdx) => (
+              {CRITERIA.map((crit, cIdx) => (
                 <div key={cIdx} className="glass-card rounded-2xl p-6 border border-white/10 space-y-2">
                   <div className="flex items-center space-x-2 text-[#71D5D9] font-mono text-xs">
                     <CheckCircle2 className="w-4 h-4" />

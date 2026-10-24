@@ -1,6 +1,8 @@
 ﻿import { motion } from 'framer-motion'
 import { Database, Globe, Layers, ArrowRight, CheckCircle2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { StackDiagram } from '../components/visuals/StackDiagram'
+import { CodeWorkbench } from '../components/visuals/CodeWorkbench'
 
 const Courses = () => {
   return (
@@ -60,6 +62,13 @@ const Courses = () => {
               </span>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* System map */}
+      <section className="py-4 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <StackDiagram />
         </div>
       </section>
 
@@ -125,6 +134,13 @@ const Courses = () => {
               ))}
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* AI-assisted workflow */}
+      <section className="pb-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <CodeWorkbench />
         </div>
       </section>
 

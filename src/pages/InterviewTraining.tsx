@@ -1,6 +1,7 @@
 ﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Award, ArrowRight, Terminal } from 'lucide-react'
+import { SystemDesignBoard } from '../components/visuals/SystemDesignBoard'
 
 const InterviewTraining = () => {
   return (
@@ -70,6 +71,8 @@ const InterviewTraining = () => {
               </motion.div>
             ))}
           </div>
+
+          <SystemDesignBoard />
 
           <div className="text-center pt-8">
             <Link to="/apply" data-cursor="button">

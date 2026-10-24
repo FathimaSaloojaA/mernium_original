@@ -168,6 +168,218 @@
   }
 }
 
+/* ── Kinetic 3D headline (hero) ── */
+:root {
+  --kt-face-a: #BDEAEB;
+  --kt-face-b: #71D5D9;
+  --kt-face-c: #3F616A;
+  --kt-sheen: #FFFFFF;
+  --kt-depth-near: #11586B;
+  --kt-depth-far: #0A1319;
+  --kt-edge: rgba(189, 234, 235, 0.85);
+  --kt-glow: rgba(113, 213, 217, 0.55);
+  --kt-glow-soft: rgba(89, 172, 183, 0.3);
+  --kt-accent: #71D5D9;
+  --kt-node: #71D5D9;
+  --kt-line: rgba(113, 213, 217, 0.55);
+  --kt-mote: #BDEAEB;
+}
+
+html.light,
+html[data-theme='light'] {
+  --kt-face-a: #11586B;
+  --kt-face-b: #3F616A;
+  --kt-face-c: #59ACB7;
+  --kt-sheen: #71D5D9;
+  --kt-depth-near: #59ACB7;
+  --kt-depth-far: #BDEAEB;
+  --kt-edge: rgba(17, 88, 107, 0.7);
+  --kt-glow: rgba(89, 172, 183, 0.45);
+  --kt-glow-soft: rgba(113, 213, 217, 0.25);
+  --kt-accent: #11586B;
+  --kt-node: #11586B;
+  --kt-line: rgba(17, 88, 107, 0.45);
+  --kt-mote: #11586B;
+}
+
+.kt-stage {
+  perspective: 1200px;
+  perspective-origin: 40% 40%;
+}
+
+.kt-rig,
+.kt-word,
+.kt-letter {
+  transform-style: preserve-3d;
+}
+
+.kt-word {
+  position: absolute;
+  inset: 0 auto auto 0;
+  display: flex;
+  white-space: nowrap;
+}
+
+.kt-letter {
+  position: relative;
+  display: inline-block;
+  margin-right: -0.015em;
+}
+
+.kt-depth,
+.kt-shard {
+  position: absolute;
+  inset: 0;
+}
+
+.kt-depth {
+  transform: translateZ(var(--z));
+  color: color-mix(in oklab, var(--kt-depth-near), var(--kt-depth-far) calc(var(--d) * 100%));
+}
+
+.kt-sizer {
+  visibility: hidden;
+}
+
+.kt-face {
+  display: inline-block;
+  color: transparent;
+  background-image: linear-gradient(100deg, var(--kt-face-a) 0%, var(--kt-face-b) 30%, var(--kt-face-b) 42%, var(--kt-sheen) 48%, var(--kt-face-b) 54%, var(--kt-face-c) 100%);
+  background-size: 300% 100%;
+  background-position: 0% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: kt-sweep 2.4s cubic-bezier(0.4, 0, 0.2, 1) calc(var(--sweep, 0.8s) + var(--i, 0) * 0.08s) both;
+}
+
+.kt-letter--accent .kt-face {
+  background-image: none;
+  color: var(--kt-accent);
+}
+
+.kt-face--luminous {
+  -webkit-text-stroke: 0.01em var(--kt-edge);
+  filter: drop-shadow(0 0 0.06em var(--kt-glow)) drop-shadow(0 0 0.22em var(--kt-glow-soft));
+  animation:
+    kt-sweep 2.4s cubic-bezier(0.4, 0, 0.2, 1) calc(var(--sweep, 0.8s) + var(--i, 0) * 0.08s) both,
+    kt-reveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) calc(0.45s + var(--i, 0) * 0.075s) both;
+}
+
+.kt-links {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  transform: translateZ(-0.16em);
+  pointer-events: none;
+}
+
+.kt-mote {
+  position: absolute;
+  width: var(--s);
+  height: var(--s);
+  border-radius: 9999px;
+  background: var(--kt-mote);
+  box-shadow: 0 0 10px var(--kt-glow);
+  transform: translateZ(var(--z));
+  animation: kt-rise var(--dur) ease-in-out var(--delay) infinite both;
+}
+
+@keyframes kt-sweep {
+  from { background-position: 100% 0; }
+  to { background-position: 0% 0; }
+}
+
+@keyframes kt-reveal {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(-40% -20% -40% -20%); }
+}
+
+@keyframes kt-rise {
+  0% { opacity: 0; translate: 0 0.25em; }
+  30% { opacity: 0.9; }
+  100% { opacity: 0; translate: 0 -0.6em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kt-face,
+  .kt-face--luminous,
+  .kt-mote {
+    animation: none;
+  }
+}
+
+/* ── Illustration system (diagrams across pages) ── */
+:root {
+  --viz-line: 113 213 217;
+  --viz-mid: 89 172 183;
+  --viz-text: 189 234 235;
+  --viz-dim: 86 123 129;
+  --viz-panel: 17 88 107;
+  --viz-bg: 10 19 25;
+}
+
+html.light,
+html[data-theme='light'] {
+  --viz-line: 17 88 107;
+  --viz-mid: 63 97 106;
+  --viz-text: 17 88 107;
+  --viz-dim: 86 123 129;
+  --viz-panel: 189 234 235;
+  --viz-bg: 255 255 255;
+}
+
+.viz-stroke { stroke: rgb(var(--viz-line) / 0.75); }
+.viz-stroke-soft { stroke: rgb(var(--viz-mid) / 0.4); }
+.viz-stroke-dim { stroke: rgb(var(--viz-dim) / 0.45); }
+.viz-fill-node { fill: rgb(var(--viz-line)); }
+.viz-fill-halo { fill: rgb(var(--viz-line) / 0.14); }
+.viz-fill-panel { fill: rgb(var(--viz-panel) / 0.22); stroke: rgb(var(--viz-text) / 0.16); }
+.viz-fill-bg { fill: rgb(var(--viz-bg) / 0.75); }
+.viz-fill-dim { fill: rgb(var(--viz-dim) / 0.5); }
+.viz-fill-mid { fill: rgb(var(--viz-mid) / 0.55); }
+.viz-text { fill: rgb(var(--viz-text)); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.12em; }
+.viz-text-accent { fill: rgb(var(--viz-line)); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.12em; }
+.viz-text-dim { fill: rgb(var(--viz-dim)); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.12em; }
+.viz-text-display { fill: rgb(var(--viz-text)); font-family: 'Syne', sans-serif; font-weight: 800; }
+.viz-glow { filter: drop-shadow(0 0 6px rgb(var(--viz-line) / 0.55)); }
+
+/* HTML diagram surfaces */
+.viz-card { background: rgb(var(--viz-panel) / 0.16); border: 1px solid rgb(var(--viz-text) / 0.14); }
+.viz-chip { background: rgb(var(--viz-bg) / 0.55); border: 1px solid rgb(var(--viz-mid) / 0.3); color: rgb(var(--viz-text)); }
+.viz-ink { color: rgb(var(--viz-text)); }
+.viz-ink-accent { color: rgb(var(--viz-line)); }
+.viz-ink-mid { color: rgb(var(--viz-mid)); }
+.viz-ink-dim { color: rgb(var(--viz-dim)); }
+.viz-rail { background: rgb(var(--viz-mid) / 0.25); }
+.viz-bar { background: linear-gradient(90deg, rgb(var(--viz-mid) / 0.6), rgb(var(--viz-line))); }
+
+/* Packets travelling along a connector (HTML diagrams). */
+.viz-flow {
+  background-image: linear-gradient(90deg, transparent 0%, rgb(var(--viz-line) / 0.9) 50%, transparent 100%);
+  background-size: 40% 100%;
+  background-repeat: no-repeat;
+  animation: viz-flow 2.4s linear infinite;
+}
+.viz-flow-v {
+  background-image: linear-gradient(180deg, transparent 0%, rgb(var(--viz-line) / 0.9) 50%, transparent 100%);
+  background-size: 100% 40%;
+  background-repeat: no-repeat;
+  animation: viz-flow-v 2.4s linear infinite;
+}
+@keyframes viz-flow { from { background-position: -60% 0; } to { background-position: 160% 0; } }
+@keyframes viz-flow-v { from { background-position: 0 -60%; } to { background-position: 0 160%; } }
+
+@keyframes viz-caret { 50% { opacity: 0; } }
+.viz-caret { animation: viz-caret 1s steps(1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .viz-flow,
+  .viz-flow-v,
+  .viz-caret {
+    animation: none;
+  }
+}
+
 /* â”€â”€ Custom Scrollbar â”€â”€ */
 ::-webkit-scrollbar {
   width: 4px;

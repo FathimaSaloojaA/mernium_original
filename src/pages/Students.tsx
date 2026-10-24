@@ -1,5 +1,6 @@
 ﻿import { motion } from 'framer-motion'
 import { Users, Award } from 'lucide-react'
+import { ProjectPreview } from '../components/visuals/ProjectPreview'
 
 const students = [
   {
@@ -74,6 +75,8 @@ const Students = () => {
               transition={{ delay: idx * 0.1 }}
               className="glass-card rounded-3xl p-8 border border-white/10 glass-card-hover space-y-6"
             >
+              <ProjectPreview name={student.project} />
+
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs text-[#71D5D9] bg-[#59ACB7]/20 px-3 py-1 rounded-full border border-[#59ACB7]/30">
                   {student.cohort}

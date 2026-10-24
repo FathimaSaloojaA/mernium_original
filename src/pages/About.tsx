@@ -1,6 +1,7 @@
 ﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Target, Lightbulb, Shield, TrendingUp, AlertTriangle, ArrowRight, Cpu } from 'lucide-react'
+import { GrowthLoop } from '../components/visuals/GrowthLoop'
 
 const About = () => {
   return (
@@ -67,6 +68,8 @@ const About = () => {
               ))}
             </div>
           </motion.div>
+
+          <GrowthLoop />
 
           {/* Pillars */}
           <div className="grid md:grid-cols-2 gap-8">

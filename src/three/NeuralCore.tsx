@@ -146,6 +146,61 @@ function useScene() {
   return ctx
 }
 
+// ─── Headline synchronisation ────────────────────────────────
+// 0 = BUILD (shapes assemble), 1 = LEARN (connections activate),
+// 2 = BECOME (luminous final state).
+export type CorePhase = 0 | 1 | 2
+
+interface Drive {
+  phase: CorePhase
+  assemble: number
+  connect: number
+  glow: number
+}
+
+const PHASE_TARGETS: Record<CorePhase, { connect: number; glow: number }> = {
+  0: { connect: 0.12, glow: 0.2 },
+  1: { connect: 1, glow: 0.5 },
+  2: { connect: 1, glow: 1 },
+}
+
+const DriveContext = createContext<{ current: Drive } | null>(null)
+
+function useDrive() {
+  const ctx = useContext(DriveContext)
+  if (!ctx) throw new Error('useDrive must be used inside <NeuralCore>')
+  return ctx
+}
+
+const ease = (x: number) => 1 - Math.pow(1 - THREE.MathUtils.clamp(x, 0, 1), 3)
+
+// Eases the shared drive values toward the current phase's targets.
+// Entering BUILD briefly loosens the structure so it can re-assemble.
+function PhaseDriver() {
+  const { motion } = useScene()
+  const drive = useDrive()
+  const last = useRef({ phase: -1, start: 0 })
+  useFrame((state, delta) => {
+    const d = drive.current
+    const target = PHASE_TARGETS[d.phase]
+    if (!motion) {
+      d.assemble = 1
+      d.connect = target.connect
+      d.glow = target.glow
+      return
+    }
+    const now = state.clock.elapsedTime
+    if (d.phase !== last.current.phase) last.current = { phase: d.phase, start: now }
+    const sincePhase = now - last.current.start
+    const dt = Math.min(delta, 0.1)
+    const loosen = d.phase === 0 && sincePhase < 0.6
+    d.assemble = THREE.MathUtils.damp(d.assemble, loosen ? 0 : 1, loosen ? 3.5 : 1.5, dt)
+    d.connect = THREE.MathUtils.damp(d.connect, target.connect, 1.6, dt)
+    d.glow = THREE.MathUtils.damp(d.glow, target.glow, 1.3, dt)
+  }, -1)
+  return null
+}
+
 function sceneTime(state: RootState, motion: boolean) {
   return motion ? state.clock.elapsedTime : STILL_TIME
 }
@@ -197,12 +252,16 @@ const lineFragment = /* glsl */ `
   uniform vec3 uBase;
   uniform vec3 uHot;
   uniform float uBaseAlpha;
+  uniform float uConnect;
   varying float vT;
   varying float vSeed;
   varying float vPulse;
   varying float vSpeed;
   varying float vFade;
   void main() {
+    // Strands grow out from their source node as the network activates.
+    float reveal = smoothstep(0.0, 0.06, uConnect * 1.4 - vT - vSeed * 0.35);
+    if (reveal <= 0.0) discard;
     // A pulse crosses the strand during part of its cycle, then rests.
     float head = fract(uTime * 0.09 * vSpeed + vSeed) * 2.2 - 0.6;
     float d = vT - head;
@@ -211,7 +270,8 @@ const lineFragment = /* glsl */ `
     float pulse = vPulse * (spark + tail);
     float breathe = 0.8 + 0.2 * sin(uTime * 0.6 + vSeed * 6.2831);
     vec3 col = mix(uBase, uHot, clamp(pulse, 0.0, 1.0));
-    gl_FragColor = vec4(col, (uBaseAlpha * breathe + pulse) * vFade);
+    float alpha = uBaseAlpha * breathe * mix(0.4, 1.0, uConnect) + pulse * uConnect;
+    gl_FragColor = vec4(col, alpha * vFade * reveal);
     ${OUTPUT_CHUNK}
   }
 `
@@ -290,6 +350,7 @@ const nucleusFragment = /* glsl */ `
   uniform vec3 uDeep;
   uniform vec3 uBright;
   uniform vec3 uPale;
+  uniform float uGlow;
   varying vec3 vNormal;
   varying vec3 vView;
   varying vec3 vPos;
@@ -299,7 +360,8 @@ const nucleusFragment = /* glsl */ `
     float beat = 0.5 + 0.5 * sin(uTime * 1.4);
     vec3 col = mix(uDeep, uBright, 0.5 + 0.22 * flow * (0.6 + 0.4 * beat));
     col = mix(col, mix(uPale, uBright, 0.5), fresnel * 0.6);
-    gl_FragColor = vec4(col * 1.25, 1.0);
+    col = mix(col, uPale, uGlow * 0.25);
+    gl_FragColor = vec4(col * mix(0.8, 1.55, uGlow), 1.0);
     ${OUTPUT_CHUNK}
   }
 `
@@ -456,20 +518,26 @@ function buildCage(radius: number) {
   const edges = new THREE.EdgesGeometry(ico)
   const pos = edges.getAttribute('position')
   const up = new THREE.Vector3(0, 1, 0)
-  const edgeMatrices: THREE.Matrix4[] = []
+  const rand = mulberry32(13)
+  // Each piece remembers where it flies in from, so the cage can assemble.
+  const scatter = () => ({
+    offset: new THREE.Vector3(rand() - 0.5, rand() - 0.5, rand() - 0.5).normalize().multiplyScalar(1.6 + rand() * 2.2),
+    spin: new THREE.Quaternion().setFromEuler(new THREE.Euler(rand() * 6, rand() * 6, rand() * 6)),
+    delay: rand(),
+  })
+  const struts: { mid: THREE.Vector3; quaternion: THREE.Quaternion; length: number; from: ReturnType<typeof scatter> }[] = []
   const vertices = new Map<string, THREE.Vector3>()
   for (let i = 0; i < pos.count; i += 2) {
     const a = new THREE.Vector3().fromBufferAttribute(pos, i)
     const b = new THREE.Vector3().fromBufferAttribute(pos, i + 1)
     const dir = b.clone().sub(a)
     const quaternion = new THREE.Quaternion().setFromUnitVectors(up, dir.clone().normalize())
-    const mid = a.clone().add(b).multiplyScalar(0.5)
-    edgeMatrices.push(new THREE.Matrix4().compose(mid, quaternion, new THREE.Vector3(1, dir.length(), 1)))
+    struts.push({ mid: a.clone().add(b).multiplyScalar(0.5), quaternion, length: dir.length(), from: scatter() })
     for (const p of [a, b]) vertices.set(p.toArray().map((n) => n.toFixed(3)).join(','), p)
   }
   ico.dispose()
   edges.dispose()
-  return { edgeMatrices, vertices: [...vertices.values()] }
+  return { struts, joints: [...vertices.values()].map((p) => ({ p, from: scatter() })) }
 }
 
 function buildGlyphGeometry() {
@@ -519,10 +587,12 @@ function Glass({ opacity }: { opacity?: number }) {
 
 function Nucleus() {
   const { motion } = useScene()
+  const drive = useDrive()
   const mesh = useRef<THREE.Mesh>(null!)
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0 },
+      uGlow: { value: 0 },
       uDeep: { value: new THREE.Color(PALETTE.deep) },
       uBright: { value: new THREE.Color(PALETTE.bright) },
       uPale: { value: new THREE.Color(PALETTE.pale) },
@@ -531,8 +601,10 @@ function Nucleus() {
   )
   useFrame((state) => {
     const t = sceneTime(state, motion)
+    const { glow, assemble } = drive.current
     uniforms.uTime.value = t
-    mesh.current.scale.setScalar(1 + Math.sin(t * 1.4) * 0.04)
+    uniforms.uGlow.value = glow
+    mesh.current.scale.setScalar((0.6 + 0.4 * ease(assemble)) * (1 + glow * 0.12) * (1 + Math.sin(t * 1.4) * 0.04))
   })
   return (
     <mesh ref={mesh}>
@@ -544,16 +616,28 @@ function Nucleus() {
 
 function Crystal() {
   const { look, tier, motion } = useScene()
+  const drive = useDrive()
   const crystal = useRef<THREE.Group>(null!)
   const inner = useRef<THREE.Mesh>(null!)
+  const crystalMesh = useRef<THREE.Mesh>(null!)
+  const edgeMaterial = useRef<THREE.LineBasicMaterial>(null!)
   const background = useMemo(() => new THREE.Color(look.transmissionBg), [look])
   const geometry = useDisposable(() => new THREE.DodecahedronGeometry(1, 0), [])
   const edges = useDisposable(() => new THREE.EdgesGeometry(geometry), [geometry])
 
   useFrame((state) => {
     const t = sceneTime(state, motion)
-    crystal.current.rotation.set(t * 0.05, t * 0.11, 0)
-    inner.current.rotation.set(-t * 0.09, -t * 0.07, t * 0.04)
+    const { assemble, glow } = drive.current
+    const a = ease(assemble)
+    const late = ease((assemble - 0.25) / 0.75)
+    // The crystal spirals in from a compressed seed; the inner shell follows.
+    crystal.current.rotation.set(t * 0.05 + (1 - a) * 2.4, t * 0.11 + (1 - a) * 3.1, 0)
+    crystal.current.scale.setScalar(0.3 + 0.7 * late)
+    inner.current.rotation.set(-t * 0.09 - (1 - a) * 2, -t * 0.07, t * 0.04)
+    inner.current.scale.setScalar(0.4 + 0.6 * a)
+    const material = crystalMesh.current.material as THREE.MeshPhysicalMaterial
+    material.emissiveIntensity = look.cageEmissive * (0.3 + glow * 1.1)
+    edgeMaterial.current.opacity = 0.12 + 0.16 * late + glow * 0.2
   })
 
   return (
@@ -563,7 +647,7 @@ function Crystal() {
         <Glass opacity={look.glassOpacity * 1.3} />
       </mesh>
       <group ref={crystal}>
-        <mesh geometry={geometry}>
+        <mesh ref={crystalMesh} geometry={geometry}>
           {tier.transmission ? (
             <MeshTransmissionMaterial
               background={background}
@@ -591,7 +675,7 @@ function Crystal() {
           )}
         </mesh>
         <lineSegments geometry={edges}>
-          <lineBasicMaterial color={look.node} transparent opacity={0.28} depthWrite={false} toneMapped={false} />
+          <lineBasicMaterial ref={edgeMaterial} color={look.node} transparent opacity={0.28} depthWrite={false} toneMapped={false} />
         </lineSegments>
       </group>
     </>
@@ -600,27 +684,45 @@ function Crystal() {
 
 function Cage() {
   const { look, motion } = useScene()
+  const drive = useDrive()
   const group = useRef<THREE.Group>(null!)
   const struts = useRef<THREE.InstancedMesh>(null!)
   const joints = useRef<THREE.InstancedMesh>(null!)
   const cage = useMemo(() => buildCage(CAGE_RADIUS), [])
-
-  useLayoutEffect(() => {
-    cage.edgeMatrices.forEach((m, i) => struts.current.setMatrixAt(i, m))
-    struts.current.instanceMatrix.needsUpdate = true
-    const m = new THREE.Matrix4()
-    cage.vertices.forEach((p, i) => joints.current.setMatrixAt(i, m.makeTranslation(p.x, p.y, p.z)))
-    joints.current.instanceMatrix.needsUpdate = true
-  }, [cage])
+  const scratch = useMemo(
+    () => ({ m: new THREE.Matrix4(), p: new THREE.Vector3(), q: new THREE.Quaternion(), s: new THREE.Vector3(), last: -1 }),
+    [],
+  )
 
   useFrame((state) => {
     const t = sceneTime(state, motion)
     group.current.rotation.set(Math.sin(t * 0.1) * 0.2, -t * 0.045, Math.cos(t * 0.08) * 0.1)
+
+    const assemble = drive.current.assemble
+    if (Math.abs(assemble - scratch.last) < 1e-4) return
+    scratch.last = assemble
+    const { m, p, q, s } = scratch
+    // Staggered fly-in: each strut travels from its scatter point and untwists into place.
+    cage.struts.forEach((strut, i) => {
+      const k = ease((assemble - strut.from.delay * 0.4) / 0.6)
+      p.copy(strut.from.offset).multiplyScalar(1 - k).add(strut.mid)
+      q.copy(strut.quaternion).multiply(strut.from.spin).slerp(strut.quaternion, k)
+      s.set(k, strut.length * (0.25 + 0.75 * k), k)
+      struts.current.setMatrixAt(i, m.compose(p, q, s))
+    })
+    cage.joints.forEach((joint, i) => {
+      const k = ease((assemble - 0.2 - joint.from.delay * 0.3) / 0.5)
+      p.copy(joint.from.offset).multiplyScalar(1 - k).add(joint.p)
+      s.setScalar(k)
+      joints.current.setMatrixAt(i, m.compose(p, q.identity(), s))
+    })
+    struts.current.instanceMatrix.needsUpdate = true
+    joints.current.instanceMatrix.needsUpdate = true
   })
 
   return (
     <group ref={group}>
-      <instancedMesh ref={struts} args={[undefined, undefined, cage.edgeMatrices.length]}>
+      <instancedMesh ref={struts} args={[undefined, undefined, cage.struts.length]}>
         <cylinderGeometry args={[0.007, 0.007, 1, 6]} />
         <meshStandardMaterial
           color={look.cage}
@@ -632,7 +734,7 @@ function Cage() {
           opacity={0.5}
         />
       </instancedMesh>
-      <instancedMesh ref={joints} args={[undefined, undefined, cage.vertices.length]}>
+      <instancedMesh ref={joints} args={[undefined, undefined, cage.joints.length]}>
         <icosahedronGeometry args={[0.03, 2]} />
         <meshBasicMaterial color={look.node} toneMapped={false} />
       </instancedMesh>
@@ -648,11 +750,16 @@ const ARCS = [
 
 function Arcs() {
   const { motion } = useScene()
+  const drive = useDrive()
   const rings = useRef<(THREE.Mesh | null)[]>([])
   useFrame((state) => {
     const t = sceneTime(state, motion)
+    const a = ease((drive.current.assemble - 0.15) / 0.85)
     rings.current.forEach((ring, i) => {
-      if (ring) ring.rotation.z = t * ARCS[i].speed + i * 2.1
+      if (!ring) return
+      ring.rotation.z = t * ARCS[i].speed + i * 2.1 + (1 - a) * (2 + i)
+      ring.scale.setScalar(1 + (1 - a) * (0.8 + i * 0.3))
+      ;(ring.material as THREE.Material).opacity = 0.6 * a
     })
   })
   return (
@@ -671,6 +778,7 @@ function Arcs() {
 
 function Network() {
   const { look, tier, motion } = useScene()
+  const drive = useDrive()
   const dpr = useThree((s) => s.viewport.dpr)
   const group = useRef<THREE.Group>(null!)
   const net = useMemo(() => buildNetwork(tier.nodes, tier.segments), [tier])
@@ -688,6 +796,7 @@ function Network() {
       uBase: { value: new THREE.Color() },
       uHot: { value: new THREE.Color() },
       uBaseAlpha: { value: 0 },
+      uConnect: { value: 0 },
     }),
     [],
   )
@@ -706,7 +815,11 @@ function Network() {
     lineUniforms.uTime.value = t
     nodeUniforms.uTime.value = t
     nodeUniforms.uPixelRatio.value = dpr
+    const { connect, assemble } = drive.current
+    lineUniforms.uConnect.value = connect
+    nodeUniforms.uOpacity.value = (0.35 + 0.65 * connect) * ease(assemble)
     group.current.rotation.set(Math.sin(t * 0.07) * 0.08, t * 0.035, 0)
+    group.current.scale.setScalar(1 + (1 - ease(assemble)) * 0.35)
   })
 
   return (
@@ -741,6 +854,7 @@ function Particles() {
   const { look, tier, motion } = useScene()
   const dpr = useThree((s) => s.viewport.dpr)
   const points = useRef<THREE.Points>(null!)
+  const drive = useDrive()
   const geometry = useDisposable(() => buildParticles(tier.particles), [tier.particles])
   const uniforms = useMemo(() => makePointUniforms(look.particle, look.particle, look.particleOpacity, 0.35), [])
 
@@ -754,6 +868,7 @@ function Particles() {
     const t = sceneTime(state, motion)
     uniforms.uTime.value = t
     uniforms.uPixelRatio.value = dpr
+    uniforms.uOpacity.value = look.particleOpacity * (0.7 + 0.55 * drive.current.glow)
     points.current.rotation.y = t * 0.01
   })
 
@@ -792,12 +907,14 @@ function LightTrail({ radius, tilt, speed, phase }: { radius: number; tilt: [num
     () => ({ uHead: { value: 0 }, uColor: { value: new THREE.Color() }, uOpacity: { value: 1 } }),
     [],
   )
+  const drive = useDrive()
   useLayoutEffect(() => {
     uniforms.uColor.value.set(look.trail)
-    uniforms.uOpacity.value = look.trailOpacity
   }, [look, uniforms])
   useFrame((state) => {
+    const { connect, glow } = drive.current
     uniforms.uHead.value = (sceneTime(state, motion) * speed + phase) % 1
+    uniforms.uOpacity.value = look.trailOpacity * (0.15 + 0.85 * connect) * (0.65 + 0.35 * glow)
   })
   return (
     <lineLoop geometry={geometry} rotation={tilt} frustumCulled={false}>
@@ -920,8 +1037,9 @@ function OrbiterShape({ kind }: { kind: OrbiterKind }) {
   )
 }
 
-function Orbiter({ config }: { config: OrbiterConfig }) {
+function Orbiter({ config, index }: { config: OrbiterConfig; index: number }) {
   const { motion } = useScene()
+  const drive = useDrive()
   const ref = useRef<THREE.Group>(null!)
   const tilt = useMemo(() => new THREE.Euler(...config.tilt), [config])
   const scratch = useMemo(() => new THREE.Vector3(), [])
@@ -929,9 +1047,13 @@ function Orbiter({ config }: { config: OrbiterConfig }) {
 
   useFrame((state) => {
     const t = sceneTime(state, motion)
-    const a = t * config.speed + config.phase
-    scratch.set(Math.cos(a) * config.radius, Math.sin(t * 0.5 + config.phase) * 0.12, Math.sin(a) * config.radius * 0.8)
+    // Orbiters drift in from the outer field as the structure assembles.
+    const k = ease((drive.current.assemble - 0.1 - index * 0.06) / 0.6)
+    const a = t * config.speed + config.phase + (1 - k) * 1.5
+    const radius = config.radius * (1 + (1 - k) * 1.1)
+    scratch.set(Math.cos(a) * radius, Math.sin(t * 0.5 + config.phase) * 0.12, Math.sin(a) * radius * 0.8)
     ref.current.position.copy(scratch.applyEuler(tilt))
+    ref.current.scale.setScalar(config.scale * (0.2 + 0.8 * k))
     const [sx, sy, sz] = config.spin
     if (facesViewer) {
       // Readable shapes sway gently instead of tumbling.
@@ -964,8 +1086,10 @@ function Backglow() {
     uniforms.uOuter.value.set(look.glowOuter)
     uniforms.uOpacity.value = look.glowOpacity
   }, [look, uniforms])
+  const drive = useDrive()
   useFrame((state) => {
     uniforms.uTime.value = sceneTime(state, motion)
+    uniforms.uOpacity.value = look.glowOpacity * (0.45 + 0.85 * drive.current.glow)
   })
   return (
     <mesh position={[0, 0, -1.6]} scale={9} renderOrder={-1}>
@@ -985,15 +1109,18 @@ function Backglow() {
 
 function CoreAssembly() {
   const { look, motion } = useScene()
+  const drive = useDrive()
   const group = useRef<THREE.Group>(null!)
+  const light = useRef<THREE.PointLight>(null!)
   useFrame((state) => {
     const t = sceneTime(state, motion)
     group.current.position.y = Math.sin(t * 0.45) * 0.06
     group.current.rotation.y = t * 0.06
+    light.current.intensity = look.inner * (0.45 + 1.1 * drive.current.glow)
   })
   return (
     <group ref={group}>
-      <pointLight intensity={look.inner} distance={6} decay={1.6} color={PALETTE.bright} />
+      <pointLight ref={light} intensity={look.inner} distance={6} decay={1.6} color={PALETTE.bright} />
       <Nucleus />
       <Crystal />
       <Cage />
@@ -1039,8 +1166,8 @@ function Composition({ parallax }: { parallax: boolean }) {
       <Network />
       <LightTrail radius={2.65} tilt={[0.35, 0, 0.2]} speed={0.07} phase={0} />
       <LightTrail radius={3.3} tilt={[-0.25, 0.4, -0.3]} speed={-0.045} phase={0.5} />
-      {ORBITERS.map((o) => (
-        <Orbiter key={o.kind} config={o} />
+      {ORBITERS.map((o, i) => (
+        <Orbiter key={o.kind} config={o} index={i} />
       ))}
     </group>
   )
@@ -1141,8 +1268,12 @@ class SceneBoundary extends Component<{ fallback: ReactNode; children: ReactNode
 
 // Memoised: the hero re-renders on every scroll-velocity tick, which would
 // otherwise re-render the Canvas tree (and re-bake the environment map).
-export const NeuralCore = memo(function NeuralCore() {
+export const NeuralCore = memo(function NeuralCore({ phase = 2 }: { phase?: CorePhase }) {
   const wrapper = useRef<HTMLDivElement>(null)
+  const drive = useRef<Drive>({ phase, assemble: 0, connect: 0, glow: 0 })
+  useEffect(() => {
+    drive.current.phase = phase
+  }, [phase])
   const [webgl] = useState(hasWebGL)
   const [visible, setVisible] = useState(true)
   const [ready, setReady] = useState(false)
@@ -1195,10 +1326,14 @@ export const NeuralCore = memo(function NeuralCore() {
           style={{ pointerEvents: 'none' }}
         >
           <SceneContext.Provider value={settings}>
-            <InvalidateOn value={settings} />
-            <Lighting />
-            <Particles />
-            <Composition parallax={motion && finePointer && !compact} />
+            <DriveContext.Provider value={drive}>
+              <InvalidateOn value={settings} />
+              <InvalidateOn value={phase} />
+              <PhaseDriver />
+              <Lighting />
+              <Particles />
+              <Composition parallax={motion && finePointer && !compact} />
+            </DriveContext.Provider>
           </SceneContext.Provider>
         </Canvas>
       </SceneBoundary>

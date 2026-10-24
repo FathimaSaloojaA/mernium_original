@@ -1,5 +1,6 @@
 ﻿import { motion } from 'framer-motion'
 import { Shield } from 'lucide-react'
+import { MentorNetwork } from '../components/visuals/MentorNetwork'
 
 const teachers = [
   {
@@ -47,6 +48,13 @@ const Teachers = () => {
           >
             Learn directly from senior software architects and engineering leaders who evaluate real candidates in modern product companies.
           </motion.p>
+        </div>
+      </section>
+
+      {/* Mentorship graph */}
+      <section className="px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <MentorNetwork />
         </div>
       </section>
 

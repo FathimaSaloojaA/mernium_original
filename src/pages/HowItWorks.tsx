@@ -1,6 +1,7 @@
 ﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Code2, Compass, CheckCircle2, Zap, Trophy, ArrowRight, Layers } from 'lucide-react'
+import { JourneyMap } from '../components/visuals/JourneyMap'
 
 const steps = [
   {
@@ -71,6 +72,13 @@ const HowItWorks = () => {
           >
             A structured pipeline designed to convert beginner curiosity into an unstoppable, interview-ready builder.
           </motion.p>
+        </div>
+      </section>
+
+      {/* Stage map */}
+      <section className="px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <JourneyMap stages={steps} />
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 ﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { MessageSquare, Mic, ArrowRight } from 'lucide-react'
+import { SpeechStructure } from '../components/visuals/SpeechStructure'
 
 const CommunicationTraining = () => {
   return (
@@ -70,6 +71,8 @@ const CommunicationTraining = () => {
               </motion.div>
             ))}
           </div>
+
+          <SpeechStructure />
 
           <div className="text-center pt-8">
             <Link to="/apply" data-cursor="button">
