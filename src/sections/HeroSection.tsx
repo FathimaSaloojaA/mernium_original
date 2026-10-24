@@ -1,11 +1,10 @@
-import { useRef } from 'react'
+﻿import { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Terminal, Sparkles, Compass } from 'lucide-react'
+import { ArrowUpRight, Terminal, Compass } from 'lucide-react'
 import { HeroWorld } from '../three/HeroWorld'
 import { useMagnetic } from '../hooks/useMagnetic'
 import { useScrollVelocity } from '../hooks/useScrollVelocity'
-import { PLACEHOLDERS } from '../assets/placeholders/placeholderSystem'
 
 export const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -32,7 +31,7 @@ export const HeroSection = () => {
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pointer-events-none">
         {/* Asymmetric Overlapping Typography & Content Column */}
-        <div className="lg:col-span-8 space-y-8 pointer-events-auto">
+        <div className="lg:col-span-12 space-y-8 pointer-events-auto">
           {/* Eyebrow Fragment Pill */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -123,48 +122,6 @@ export const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Right Asymmetric Fragment Overlay Column */}
-        <div className="lg:col-span-4 space-y-6 pointer-events-auto hidden lg:block">
-          {/* Overlapping Floating Image Fragment */}
-          <motion.div
-            className="relative w-full h-[320px] overflow-hidden border-r-2 border-acid shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 group"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            <img
-              src={PLACEHOLDERS.heroVisual}
-              alt="MERNIUM 3D Visual"
-              className="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-80" />
-            <div className="absolute bottom-4 left-4 font-mono text-[10px] text-acid bg-ink/90 px-3 py-1 border border-acid/40 flex items-center gap-2">
-              <Sparkles className="w-3 h-3 text-acid" />
-              <span>3D DIGITAL CANVAS</span>
-            </div>
-          </motion.div>
-
-          {/* Floating Data Matrix Snippet */}
-          <motion.div
-            className="p-5 bg-ink/90 border-l border-b border-paper/10 font-mono text-xs text-paper/70 space-y-2"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <div className="flex justify-between items-center text-[10px] text-paper/40 border-b border-paper/10 pb-1">
-              <span>CANVAS REGION</span>
-              <span className="text-acid">ACTIVE</span>
-            </div>
-            <p className="text-paper/90">
-              // System Architecture &amp; Live Coding Interview Accelerator
-            </p>
-            <div className="flex items-center space-x-4 text-[10px] text-acid pt-1">
-              <span>LATENCY: 0ms</span>
-              <span>•</span>
-              <span>READINESS: 100%</span>
-            </div>
-          </motion.div>
-        </div>
       </div>
     </section>
   )

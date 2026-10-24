@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { MessageCircle, Mail, Phone, Instagram, ArrowRight, Terminal } from 'lucide-react'
 
 const Contact = () => {
@@ -10,9 +10,9 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center space-x-2 px-5 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 font-mono text-xs uppercase tracking-widest"
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-[#59ACB7]/10 border border-[#59ACB7]/30 rounded-full text-[#71D5D9] font-mono text-xs uppercase tracking-widest"
           >
-            <Terminal className="w-4 h-4 text-emerald-400" />
+            <Terminal className="w-4 h-4 text-[#71D5D9]" />
             <span>GLOBAL COMMAND CENTER</span>
           </motion.div>
 
@@ -81,16 +81,16 @@ const Contact = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 data-cursor="button"
               >
-                <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-2xl bg-[#59ACB7]/10 border border-[#59ACB7]/30 text-[#71D5D9] flex items-center justify-center group-hover:scale-110 transition-transform">
                   <IconComp className="w-7 h-7" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-2xl font-syne font-bold text-white group-hover:text-emerald-300 transition-colors">
+                  <h3 className="text-2xl font-syne font-bold text-white group-hover:text-[#BDEAEB] transition-colors">
                     {contact.title}
                   </h3>
                   <p className="text-gray-400 text-xs font-sans">{contact.description}</p>
                 </div>
-                <div className="flex items-center gap-2 font-mono text-xs text-emerald-400 group-hover:gap-3 transition-all pt-2">
+                <div className="flex items-center gap-2 font-mono text-xs text-[#71D5D9] group-hover:gap-3 transition-all pt-2">
                   <span className="font-bold">{contact.action}</span>
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>

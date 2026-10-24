@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Calendar, Clock, Users, Zap } from 'lucide-react'
 
@@ -30,9 +30,9 @@ const Batches = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center space-x-2 px-5 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 font-mono text-xs uppercase tracking-widest"
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-[#59ACB7]/10 border border-[#59ACB7]/30 rounded-full text-[#71D5D9] font-mono text-xs uppercase tracking-widest"
           >
-            <Calendar className="w-4 h-4 text-emerald-400" />
+            <Calendar className="w-4 h-4 text-[#71D5D9]" />
             <span>LIMITED COHORT CAPACITY</span>
           </motion.div>
 
@@ -65,14 +65,14 @@ const Batches = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glass-card rounded-3xl p-8 sm:p-10 border border-emerald-500/30 glass-card-hover flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+              className="glass-card rounded-3xl p-8 sm:p-10 border border-[#59ACB7]/30 glass-card-hover flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
             >
               <div className="space-y-3 max-w-2xl">
                 <div className="flex items-center space-x-3 font-mono text-xs">
-                  <span className="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30 uppercase">
+                  <span className="bg-[#59ACB7]/20 text-[#71D5D9] px-3 py-1 rounded-full border border-[#59ACB7]/30 uppercase">
                     {batch.status}
                   </span>
-                  <span className="text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+                  <span className="text-[#567B81] bg-[#567B81]/10 px-3 py-1 rounded-full border border-[#567B81]/20">
                     {batch.tag}
                   </span>
                 </div>
@@ -83,22 +83,22 @@ const Batches = () => {
 
                 <div className="flex flex-wrap gap-6 font-mono text-xs text-gray-300 pt-2">
                   <span className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-emerald-400" />
+                    <Calendar className="w-4 h-4 text-[#71D5D9]" />
                     STARTS: {batch.start}
                   </span>
                   <span className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-emerald-400" />
+                    <Clock className="w-4 h-4 text-[#71D5D9]" />
                     {batch.schedule}
                   </span>
                   <span className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-amber-400" />
+                    <Users className="w-4 h-4 text-[#567B81]" />
                     {batch.capacity}
                   </span>
                 </div>
               </div>
 
               <Link to="/apply" data-cursor="button">
-                <button className="px-6 py-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-syne font-bold text-sm tracking-wider uppercase flex items-center space-x-2 transition-all shadow-lg glow-emerald">
+                <button className="px-6 py-3 rounded-full bg-[#59ACB7] hover:bg-[#71D5D9] text-black font-syne font-bold text-sm tracking-wider uppercase flex items-center space-x-2 transition-all shadow-lg glow-emerald">
                   <span>RESERVE SEAT</span>
                   <Zap className="w-4 h-4" />
                 </button>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Award, CheckCircle2, XCircle, ArrowRight, Shield, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -7,15 +7,15 @@ const Mernmade = () => {
     <div className="relative pt-28 pb-20 overflow-x-hidden">
       {/* Hero Section */}
       <section className="min-h-[55vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#567B81]/10 rounded-full blur-[160px] pointer-events-none" />
         <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
           <motion.div
-            className="inline-flex items-center space-x-2 px-5 py-2 bg-gradient-to-r from-emerald-500/20 to-amber-500/20 border border-emerald-500/30 rounded-full text-emerald-400 font-mono text-xs uppercase tracking-widest"
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-gradient-to-r from-[#59ACB7]/20 to-[#567B81]/20 border border-[#59ACB7]/30 rounded-full text-[#71D5D9] font-mono text-xs uppercase tracking-widest"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <Sparkles className="w-4 h-4 text-[#71D5D9]" />
             <span>MERNMADE ENGINE</span>
           </motion.div>
 
@@ -75,11 +75,11 @@ const Mernmade = () => {
                   transition={{ delay: idx * 0.1 }}
                   className={`glass-card rounded-3xl p-8 border ${
                     isPositive
-                      ? 'border-emerald-500/40 bg-gradient-to-br from-emerald-500/10 via-transparent to-amber-500/5 glow-emerald shadow-xl'
+                      ? 'border-[#59ACB7]/40 bg-gradient-to-br from-[#59ACB7]/10 via-transparent to-[#567B81]/5 glow-emerald shadow-xl'
                       : 'border-white/10 bg-white/5'
                   } space-y-4`}
                 >
-                  <div className={`p-3 rounded-2xl ${isPositive ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/10 text-red-400'} w-fit`}>
+                  <div className={`p-3 rounded-2xl ${isPositive ? 'bg-[#59ACB7]/20 text-[#71D5D9]' : 'bg-red-500/10 text-red-400'} w-fit`}>
                     <IconComp className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-syne font-bold text-white">{item.title}</h3>
@@ -91,12 +91,12 @@ const Mernmade = () => {
 
           {/* MERNMADE Criteria */}
           <motion.div
-            className="glass-card rounded-3xl p-8 sm:p-12 border border-emerald-500/30 space-y-8"
+            className="glass-card rounded-3xl p-8 sm:p-12 border border-[#59ACB7]/30 space-y-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center space-x-3 text-emerald-400">
+            <div className="flex items-center space-x-3 text-[#71D5D9]">
               <Shield className="w-6 h-6" />
               <h2 className="text-3xl font-syne font-bold text-white">THE MERNMADE BADGE CRITERIA</h2>
             </div>
@@ -111,7 +111,7 @@ const Mernmade = () => {
                 { title: 'Zero Interview Fear', desc: 'Entering tech rounds with complete confidence and zero test anxiety.' },
               ].map((crit, cIdx) => (
                 <div key={cIdx} className="glass-card rounded-2xl p-6 border border-white/10 space-y-2">
-                  <div className="flex items-center space-x-2 text-emerald-400 font-mono text-xs">
+                  <div className="flex items-center space-x-2 text-[#71D5D9] font-mono text-xs">
                     <CheckCircle2 className="w-4 h-4" />
                     <span>VERIFICATION {cIdx + 1}</span>
                   </div>
@@ -124,7 +124,7 @@ const Mernmade = () => {
 
           <div className="text-center pt-8">
             <Link to="/apply" data-cursor="button">
-              <button className="px-8 py-4 rounded-full bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
+              <button className="px-8 py-4 rounded-full bg-gradient-to-r from-[#59ACB7] via-[#71D5D9] to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
                 <span>EARN THE MERNMADE BADGE</span>
                 <ArrowRight className="w-5 h-5" />
               </button>

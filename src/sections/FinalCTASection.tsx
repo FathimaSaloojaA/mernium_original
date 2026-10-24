@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Zap, Sparkles } from 'lucide-react'
 
@@ -6,8 +6,8 @@ export const FinalCTASection = () => {
   return (
     <section className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden text-center">
       {/* Glow Backdrops */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-500/15 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#59ACB7]/15 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-[#567B81]/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
 
       <div className="max-w-5xl mx-auto space-y-10 relative z-10">
@@ -15,9 +15,9 @@ export const FinalCTASection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center space-x-2 font-mono text-xs text-emerald-400 bg-emerald-500/10 px-5 py-2 rounded-full border border-emerald-500/30"
+          className="inline-flex items-center space-x-2 font-mono text-xs text-[#71D5D9] bg-[#59ACB7]/10 px-5 py-2 rounded-full border border-[#59ACB7]/30"
         >
-          <Sparkles className="w-4 h-4 text-emerald-400" />
+          <Sparkles className="w-4 h-4 text-[#71D5D9]" />
           <span>08 // ADMISSION &amp; TRANSFORMATION PORTAL</span>
         </motion.div>
 
@@ -53,7 +53,7 @@ export const FinalCTASection = () => {
         >
           <Link to="/apply" data-cursor="button">
             <motion.button
-              className="px-10 py-5 rounded-full bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 text-black font-syne font-bold text-lg tracking-wide flex items-center justify-center space-x-3 shadow-2xl glow-emerald-strong hover:scale-105 transition-all group"
+              className="px-10 py-5 rounded-full bg-gradient-to-r from-[#59ACB7] via-[#71D5D9] to-teal-500 text-black font-syne font-bold text-lg tracking-wide flex items-center justify-center space-x-3 shadow-2xl glow-emerald-strong hover:scale-105 transition-all group"
               whileTap={{ scale: 0.95 }}
             >
               <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform" />

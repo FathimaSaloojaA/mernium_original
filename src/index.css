@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800;900&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,26 +6,36 @@
 
 @layer base {
   :root {
-    --bg-void: #07080D;
-    --bg-deepspace: #0D1020;
-    --text-warmwhite: #F4F1E8;
-    --accent-acid: #C7FF3D;
-    --accent-violet: #7657FF;
-    --accent-cyan: #42DFFF;
-    --accent-magenta: #C83CFF;
+    /* â”€â”€ New Teal Palette Tokens â”€â”€ */
+    --color-ink:        #0A1319;
+    --color-surface:    #11586B;
+    --color-surface-muted: #3F616A;
+    --color-slate:      #567B81;
+    --color-accent:     #59ACB7;
+    --color-bright:     #71D5D9;
+    --color-paper:      #BDEAEB;
+
+    /* Legacy variable aliases */
+    --bg-void:          #0A1319;
+    --bg-deepspace:     #11586B;
+    --text-warmwhite:   #BDEAEB;
+    --accent-acid:      #71D5D9;
+    --accent-violet:    #59ACB7;
+    --accent-cyan:      #71D5D9;
+    --accent-magenta:   #567B81;
   }
 
   html {
-    background-color: #07080D;
-    color: #F4F1E8;
+    background-color: #0A1319;
+    color: #BDEAEB;
     scroll-behavior: initial;
     overflow-x: hidden;
   }
 
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background-color: #07080D;
-    color: #F4F1E8;
+    background-color: #0A1319;
+    color: #BDEAEB;
     overflow-x: hidden;
     width: 100%;
     margin: 0;
@@ -34,12 +44,12 @@
   }
 
   ::selection {
-    background-color: #C7FF3D;
-    color: #07080D;
+    background-color: #71D5D9;
+    color: #0A1319;
   }
 }
 
-/* Custom Cosmic Typography & Outlines */
+/* â”€â”€ Typography & Outline Utilities â”€â”€ */
 @layer utilities {
   .text-syne {
     font-family: 'Syne', sans-serif;
@@ -49,58 +59,126 @@
     font-family: 'JetBrains Mono', monospace;
   }
 
+  /* Outline variants using new palette */
   .text-outline-acid {
-    -webkit-text-stroke: 1.5px #C7FF3D;
+    -webkit-text-stroke: 1.5px #71D5D9;
     color: transparent;
   }
 
   .text-outline-cyan {
-    -webkit-text-stroke: 1.5px #42DFFF;
+    -webkit-text-stroke: 1.5px #71D5D9;
     color: transparent;
   }
 
   .text-outline-violet {
-    -webkit-text-stroke: 1.5px #7657FF;
+    -webkit-text-stroke: 1.5px #59ACB7;
     color: transparent;
   }
 
   .text-outline-warm {
-    -webkit-text-stroke: 1.5px rgba(244, 241, 232, 0.4);
+    -webkit-text-stroke: 1.5px rgba(189, 234, 235, 0.4);
     color: transparent;
   }
 
   .text-cosmic-gradient {
-    background: linear-gradient(135deg, #F4F1E8 0%, #C7FF3D 40%, #7657FF 70%, #42DFFF 100%);
+    background: linear-gradient(135deg, #BDEAEB 0%, #71D5D9 40%, #59ACB7 70%, #11586B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  /* NO CARDS RULE - Pure Floating Spatial Lines & Overlays */
+  /* Spatial line accents */
   .spatial-line {
-    border-left: 1px solid rgba(199, 255, 61, 0.3);
+    border-left: 1px solid rgba(113, 213, 217, 0.3);
   }
 
   .spatial-line-cyan {
-    border-left: 1px solid rgba(66, 223, 255, 0.3);
+    border-left: 1px solid rgba(89, 172, 183, 0.3);
   }
 
   .cosmic-blur-bg {
-    background: radial-gradient(circle, rgba(13, 16, 32, 0.6) 0%, rgba(7, 8, 13, 0.95) 100%);
+    background: radial-gradient(circle, rgba(17, 88, 107, 0.4) 0%, rgba(10, 19, 25, 0.95) 100%);
   }
 
   .cosmic-noise {
-    background-image: radial-gradient(rgba(199, 255, 61, 0.06) 1px, transparent 0);
+    background-image: radial-gradient(rgba(113, 213, 217, 0.06) 1px, transparent 0);
     background-size: 36px 36px;
+  }
+
+  .noise-bg {
+    background-image: radial-gradient(rgba(113, 213, 217, 0.04) 1px, transparent 0);
+    background-size: 36px 36px;
+  }
+
+  /* â”€â”€ Glassmorphism System â”€â”€ */
+  .glass-panel {
+    background: rgba(10, 19, 25, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(189, 234, 235, 0.12);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(189, 234, 235, 0.08);
+  }
+
+  .glass-panel-raw {
+    background: rgba(10, 19, 25, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(189, 234, 235, 0.12);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(189, 234, 235, 0.08);
+  }
+
+  .glass-card {
+    background: rgba(17, 88, 107, 0.18);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(189, 234, 235, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(189, 234, 235, 0.1);
+  }
+
+  .glass-nav {
+    background: rgba(10, 19, 25, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(189, 234, 235, 0.1);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-menu {
+    background: rgba(10, 19, 25, 0.92);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid rgba(189, 234, 235, 0.1);
+  }
+
+  /* Glow utilities */
+  .glow-teal {
+    box-shadow: 0 0 20px rgba(113, 213, 217, 0.35), 0 0 60px rgba(113, 213, 217, 0.15);
+  }
+
+  .glow-emerald {
+    box-shadow: 0 0 20px rgba(113, 213, 217, 0.3), 0 0 60px rgba(89, 172, 183, 0.1);
+  }
+
+  .glow-emerald-strong {
+    box-shadow: 0 0 30px rgba(113, 213, 217, 0.5), 0 0 80px rgba(89, 172, 183, 0.2);
+  }
+
+  /* Shadow utilities */
+  .shadow-acid-glow {
+    box-shadow: 0 0 35px rgba(113, 213, 217, 0.45);
   }
 }
 
-/* Custom Scrollbar */
+/* â”€â”€ Custom Scrollbar â”€â”€ */
 ::-webkit-scrollbar {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #07080D;
+  background: #0A1319;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C7FF3D;
+  background: #59ACB7;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #71D5D9;
 }

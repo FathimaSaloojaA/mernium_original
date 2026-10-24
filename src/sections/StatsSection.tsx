@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Users, Award, Clock, ShieldCheck } from 'lucide-react'
 
 const stats = [
@@ -44,14 +44,14 @@ export const StatsSection = () => {
               className="glass-card rounded-3xl p-8 border border-white/10 glass-card-hover space-y-4 text-center sm:text-left"
             >
               <div className="flex items-center justify-between">
-                <IconComp className="w-6 h-6 text-emerald-400" />
+                <IconComp className="w-6 h-6 text-[#71D5D9]" />
                 <span className="font-mono text-[10px] text-gray-500 uppercase">[ METRIC 0{idx + 1} ]</span>
               </div>
               <h3 className="text-5xl sm:text-6xl font-syne font-extrabold text-white tracking-tight text-gradient-cyber">
                 {stat.value}
               </h3>
               <div className="space-y-1">
-                <p className="font-mono text-xs font-bold text-emerald-400 tracking-wider">
+                <p className="font-mono text-xs font-bold text-[#71D5D9] tracking-wider">
                   {stat.label}
                 </p>
                 <p className="text-gray-400 text-xs font-sans">

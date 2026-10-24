@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Quote, MessageSquare, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react'
 
@@ -39,7 +39,7 @@ export const TestimonialsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center space-x-2 font-mono text-xs text-emerald-400 bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-500/20"
+              className="inline-flex items-center space-x-2 font-mono text-xs text-[#71D5D9] bg-[#59ACB7]/10 px-4 py-1.5 rounded-full border border-[#59ACB7]/20"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>07 // MERNIAN TESTIMONIALS</span>
@@ -52,14 +52,14 @@ export const TestimonialsSection = () => {
           <div className="flex items-center space-x-3">
             <button
               onClick={() => setActiveIdx((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
-              className="p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-emerald-500/20 hover:border-emerald-500/50 hover:text-emerald-400 transition-all"
+              className="p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-[#59ACB7]/20 hover:border-[#59ACB7]/50 hover:text-[#71D5D9] transition-all"
               data-cursor="button"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={() => setActiveIdx((prev) => (prev + 1) % testimonials.length)}
-              className="p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-emerald-500/20 hover:border-emerald-500/50 hover:text-emerald-400 transition-all"
+              className="p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-[#59ACB7]/20 hover:border-[#59ACB7]/50 hover:text-[#71D5D9] transition-all"
               data-cursor="button"
             >
               <ChevronRight className="w-5 h-5" />
@@ -75,9 +75,9 @@ export const TestimonialsSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.5 }}
-            className="glass-card rounded-3xl p-8 sm:p-14 border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 via-transparent to-black space-y-8 relative overflow-hidden shadow-2xl"
+            className="glass-card rounded-3xl p-8 sm:p-14 border border-[#59ACB7]/30 bg-gradient-to-br from-[#59ACB7]/10 via-transparent to-black space-y-8 relative overflow-hidden shadow-2xl"
           >
-            <Quote className="w-16 h-16 text-emerald-500/20 absolute top-8 right-8 pointer-events-none" />
+            <Quote className="w-16 h-16 text-[#59ACB7]/20 absolute top-8 right-8 pointer-events-none" />
 
             <div className="space-y-6 max-w-4xl relative z-10">
               <p className="text-2xl sm:text-4xl font-syne font-semibold text-white leading-relaxed tracking-tight">
@@ -89,10 +89,10 @@ export const TestimonialsSection = () => {
               <div className="space-y-1">
                 <h4 className="text-xl font-syne font-bold text-white flex items-center gap-2">
                   {testimonials[activeIdx].name}
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <CheckCircle2 className="w-4 h-4 text-[#71D5D9]" />
                 </h4>
-                <p className="font-mono text-xs text-emerald-400">
-                  {testimonials[activeIdx].role} — <span className="text-amber-400">{testimonials[activeIdx].cohort}</span>
+                <p className="font-mono text-xs text-[#71D5D9]">
+                  {testimonials[activeIdx].role} — <span className="text-[#567B81]">{testimonials[activeIdx].cohort}</span>
                 </p>
               </div>
 

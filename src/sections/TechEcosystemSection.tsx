@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Layers, Terminal, Sparkles, X, ArrowRight } from 'lucide-react'
 import { TechConstellation } from '../three/TechConstellation'
@@ -32,7 +32,7 @@ export const TechEcosystemSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center space-x-2 font-mono text-xs text-amber-400 bg-amber-500/10 px-4 py-1.5 rounded-full border border-amber-500/20"
+              className="inline-flex items-center space-x-2 font-mono text-xs text-[#567B81] bg-[#567B81]/10 px-4 py-1.5 rounded-full border border-[#567B81]/20"
             >
               <Layers className="w-3.5 h-3.5" />
               <span>03 // INTERACTIVE 3D CONSTELLATION</span>
@@ -50,8 +50,8 @@ export const TechEcosystemSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* 3D WebGL Constellation Canvas */}
           <div className="lg:col-span-8 glass-card rounded-3xl border border-white/10 overflow-hidden relative shadow-2xl">
-            <div className="absolute top-4 left-4 z-20 font-mono text-[10px] text-emerald-400 bg-black/60 px-3 py-1 rounded-full border border-emerald-500/30 flex items-center gap-2">
-              <Sparkles className="w-3 h-3 text-emerald-400" />
+            <div className="absolute top-4 left-4 z-20 font-mono text-[10px] text-[#71D5D9] bg-black/60 px-3 py-1 rounded-full border border-[#59ACB7]/30 flex items-center gap-2">
+              <Sparkles className="w-3 h-3 text-[#71D5D9]" />
               <span>3D TECH NODES</span>
             </div>
 
@@ -71,11 +71,11 @@ export const TechEcosystemSection = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -30 }}
                   transition={{ duration: 0.4 }}
-                  className="glass-card rounded-3xl p-8 border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 via-transparent to-black space-y-6 h-full flex flex-col justify-between"
+                  className="glass-card rounded-3xl p-8 border border-[#59ACB7]/30 bg-gradient-to-br from-[#59ACB7]/10 via-transparent to-black space-y-6 h-full flex flex-col justify-between"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs text-emerald-400 uppercase tracking-widest bg-emerald-500/20 px-3 py-1 rounded-full border border-emerald-500/30">
+                      <span className="font-mono text-xs text-[#71D5D9] uppercase tracking-widest bg-[#59ACB7]/20 px-3 py-1 rounded-full border border-[#59ACB7]/30">
                         {selectedNode.category}
                       </span>
                       <button
@@ -100,20 +100,20 @@ export const TechEcosystemSection = () => {
 
                     <div className="pt-4 border-t border-white/10 space-y-3">
                       <span className="font-mono text-xs text-gray-400 uppercase tracking-wider flex items-center gap-2">
-                        <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+                        <Terminal className="w-3.5 h-3.5 text-[#71D5D9]" />
                         INTERVIEW QUESTION FOCUS:
                       </span>
-                      <ul className="text-xs font-mono text-emerald-300 space-y-2">
+                      <ul className="text-xs font-mono text-[#BDEAEB] space-y-2">
                         <li className="flex items-center gap-2">
-                          <ArrowRight className="w-3 h-3 text-emerald-400" />
+                          <ArrowRight className="w-3 h-3 text-[#71D5D9]" />
                           Deep dive execution &amp; memory profiling
                         </li>
                         <li className="flex items-center gap-2">
-                          <ArrowRight className="w-3 h-3 text-emerald-400" />
+                          <ArrowRight className="w-3 h-3 text-[#71D5D9]" />
                           High-scale performance optimizations
                         </li>
                         <li className="flex items-center gap-2">
-                          <ArrowRight className="w-3 h-3 text-emerald-400" />
+                          <ArrowRight className="w-3 h-3 text-[#71D5D9]" />
                           Architectural tradeoffs &amp; design patterns
                         </li>
                       </ul>
@@ -121,14 +121,14 @@ export const TechEcosystemSection = () => {
                   </div>
 
                   <div className="pt-6">
-                    <button className="w-full py-3 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 font-mono text-xs font-bold uppercase tracking-wider transition-colors">
+                    <button className="w-full py-3 rounded-xl bg-[#59ACB7]/20 hover:bg-[#59ACB7]/30 border border-[#59ACB7]/40 text-[#BDEAEB] font-mono text-xs font-bold uppercase tracking-wider transition-colors">
                       VIEW {selectedNode.name.toUpperCase()} CURRICULUM
                     </button>
                   </div>
                 </motion.div>
               ) : (
                 <div className="glass-card rounded-3xl p-8 border border-white/10 flex flex-col items-center justify-center text-center h-full min-h-[350px] space-y-4">
-                  <Terminal className="w-12 h-12 text-emerald-400/50 animate-bounce" />
+                  <Terminal className="w-12 h-12 text-[#71D5D9]/50 animate-bounce" />
                   <p className="font-mono text-sm text-gray-400">
                     Click any 3D node inside the constellation canvas to inspect technology details.
                   </p>

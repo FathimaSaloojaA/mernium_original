@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Target, AlertOctagon, CheckCircle2, ShieldAlert, Cpu } from 'lucide-react'
 
 export const PhilosophySection = () => {
@@ -11,7 +11,7 @@ export const PhilosophySection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center space-x-2 font-mono text-xs text-emerald-400 bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-500/20"
+            className="inline-flex items-center space-x-2 font-mono text-xs text-[#71D5D9] bg-[#59ACB7]/10 px-4 py-1.5 rounded-full border border-[#59ACB7]/20"
           >
             <Cpu className="w-3.5 h-3.5" />
             <span>02 // THE INSTITUTION PHILOSOPHY</span>
@@ -73,13 +73,13 @@ export const PhilosophySection = () => {
 
           {/* MERNIUM System */}
           <motion.div
-            className="glass-card rounded-3xl p-8 md:p-10 border border-emerald-500/40 bg-gradient-to-br from-emerald-500/10 via-transparent to-amber-500/5 space-y-6 shadow-xl glow-emerald"
+            className="glass-card rounded-3xl p-8 md:p-10 border border-[#59ACB7]/40 bg-gradient-to-br from-[#59ACB7]/10 via-transparent to-[#567B81]/5 space-y-6 shadow-xl glow-emerald"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center space-x-3 text-emerald-400">
+            <div className="flex items-center space-x-3 text-[#71D5D9]">
               <Target className="w-6 h-6" />
               <h3 className="font-syne font-bold text-2xl text-white">MERNIUM SYSTEM</h3>
             </div>
@@ -92,8 +92,8 @@ export const PhilosophySection = () => {
                 'Rigorous mock interview drills until fear is entirely eliminated',
                 'Graduating as a confident builder ready to pass technical rounds',
               ].map((item, idx) => (
-                <li key={idx} className="flex items-start space-x-3 text-emerald-300 font-medium text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
+                <li key={idx} className="flex items-start space-x-3 text-[#BDEAEB] font-medium text-sm">
+                  <CheckCircle2 className="w-4 h-4 text-[#71D5D9] shrink-0 mt-1" />
                   <span>{item}</span>
                 </li>
               ))}

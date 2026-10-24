@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { X, Send, MessageCircle, Sparkles, Terminal } from 'lucide-react'
@@ -15,10 +15,10 @@ export const FloatingAssistant = () => {
             initial={{ opacity: 0, scale: 0.85, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: 20 }}
-            className="mb-4 glass-card rounded-2xl p-5 border border-emerald-500/30 bg-[#050508]/95 backdrop-blur-2xl shadow-2xl glow-emerald min-w-[240px] space-y-4"
+            className="mb-4 glass-card rounded-2xl p-5 border border-[#59ACB7]/30 backdrop-blur-2xl shadow-2xl glow-teal min-w-[240px] space-y-4"
           >
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <div className="flex items-center space-x-2 text-emerald-400 font-mono text-xs">
+            <div className="flex items-center justify-between border-b border-[#BDEAEB]/10 pb-3">
+              <div className="flex items-center space-x-2 text-[#71D5D9] font-mono text-xs">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>COMMAND SHORTCUTS</span>
               </div>
@@ -33,10 +33,10 @@ export const FloatingAssistant = () => {
             <div className="space-y-2 font-mono text-xs">
               <Link
                 to="/apply"
-                className="flex items-center space-x-3 p-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-white border border-emerald-500/30 transition-all group"
+                className="flex items-center space-x-3 p-2.5 rounded-xl bg-[#59ACB7]/10 hover:bg-[#59ACB7]/20 text-white border border-[#59ACB7]/30 transition-all group"
                 onClick={() => setIsOpen(false)}
               >
-                <Send size={14} className="text-emerald-400 group-hover:translate-x-1 transition-transform" />
+                <Send size={14} className="text-[#71D5D9] group-hover:translate-x-1 transition-transform" />
                 <span>Apply as a Mernian</span>
               </Link>
 
@@ -44,10 +44,10 @@ export const FloatingAssistant = () => {
                 href="https://wa.me/919000000000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-3 p-2.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-white border border-amber-500/30 transition-all group"
+                className="flex items-center space-x-3 p-2.5 rounded-xl bg-[#3F616A]/20 hover:bg-[#3F616A]/35 text-white border border-[#567B81]/30 transition-all group"
                 onClick={() => setIsOpen(false)}
               >
-                <MessageCircle size={14} className="text-amber-400 group-hover:scale-110 transition-transform" />
+                <MessageCircle size={14} className="text-[#BDEAEB] group-hover:scale-110 transition-transform" />
                 <span>Chat on WhatsApp</span>
               </a>
 
@@ -67,13 +67,13 @@ export const FloatingAssistant = () => {
       {/* Cyber Orb Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 via-teal-500 to-amber-500 flex items-center justify-center shadow-2xl glow-emerald-strong text-black font-syne font-bold group"
+        className="relative w-14 h-14 rounded-full bg-gradient-to-br from-[#59ACB7] via-[#11586B] to-[#3F616A] flex items-center justify-center shadow-2xl glow-emerald-strong text-white font-syne font-bold group"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         data-cursor="button"
       >
         <Sparkles className="w-6 h-6 group-hover:rotate-45 transition-transform duration-300" />
-        <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-black animate-ping" />
+        <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#71D5D9] border-2 border-[#0A1319] animate-ping" />
       </motion.button>
     </div>
   )

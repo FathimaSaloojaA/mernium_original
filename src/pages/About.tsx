@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Target, Lightbulb, Shield, TrendingUp, AlertTriangle, ArrowRight, Cpu } from 'lucide-react'
 
@@ -7,12 +7,12 @@ const About = () => {
     <div className="relative pt-28 pb-20 overflow-x-hidden">
       {/* Hero Section */}
       <section className="min-h-[50vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#59ACB7]/10 rounded-full blur-[140px] pointer-events-none" />
         <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center space-x-2 font-mono text-xs text-emerald-400 bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-500/30"
+            className="inline-flex items-center space-x-2 font-mono text-xs text-[#71D5D9] bg-[#59ACB7]/10 px-4 py-1.5 rounded-full border border-[#59ACB7]/30"
           >
             <Cpu className="w-3.5 h-3.5" />
             <span>02 // INSTITUTION DOCTRINE</span>
@@ -102,7 +102,7 @@ const About = () => {
                   transition={{ delay: idx * 0.1 }}
                   className="glass-card rounded-3xl p-8 border border-white/10 glass-card-hover space-y-4"
                 >
-                  <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 w-fit">
+                  <div className="p-3 rounded-2xl bg-[#59ACB7]/10 border border-[#59ACB7]/30 text-[#71D5D9] w-fit">
                     <IconComp className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-syne font-bold text-white">{pillar.title}</h3>
@@ -114,7 +114,7 @@ const About = () => {
 
           <div className="text-center pt-8">
             <Link to="/apply" data-cursor="button">
-              <button className="px-8 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
+              <button className="px-8 py-4 rounded-full bg-gradient-to-r from-[#59ACB7] to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
                 <span>APPLY TO JOIN THE DOCTRINE</span>
                 <ArrowRight className="w-5 h-5" />
               </button>

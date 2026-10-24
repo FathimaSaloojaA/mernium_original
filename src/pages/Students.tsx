@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Users, Award } from 'lucide-react'
 
 const students = [
@@ -37,9 +37,9 @@ const Students = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center space-x-2 px-5 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 font-mono text-xs uppercase tracking-widest"
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-[#59ACB7]/10 border border-[#59ACB7]/30 rounded-full text-[#71D5D9] font-mono text-xs uppercase tracking-widest"
           >
-            <Users className="w-4 h-4 text-emerald-400" />
+            <Users className="w-4 h-4 text-[#71D5D9]" />
             <span>MERNIAN BUILDER HALL OF FAME</span>
           </motion.div>
 
@@ -75,15 +75,15 @@ const Students = () => {
               className="glass-card rounded-3xl p-8 border border-white/10 glass-card-hover space-y-6"
             >
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs text-emerald-400 bg-emerald-500/20 px-3 py-1 rounded-full border border-emerald-500/30">
+                <span className="font-mono text-xs text-[#71D5D9] bg-[#59ACB7]/20 px-3 py-1 rounded-full border border-[#59ACB7]/30">
                   {student.cohort}
                 </span>
-                <Award className="w-5 h-5 text-amber-400" />
+                <Award className="w-5 h-5 text-[#567B81]" />
               </div>
 
               <div className="space-y-1">
                 <h3 className="text-2xl font-syne font-bold text-white">{student.name}</h3>
-                <p className="font-mono text-xs text-gray-400">{student.role} @ <span className="text-emerald-300">{student.company}</span></p>
+                <p className="font-mono text-xs text-gray-400">{student.role} @ <span className="text-[#BDEAEB]">{student.company}</span></p>
               </div>
 
               <p className="text-gray-300 text-sm font-sans italic leading-relaxed">

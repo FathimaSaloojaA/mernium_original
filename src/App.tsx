@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+﻿import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { CursorProvider } from './components/cursor/CustomCursor'
 import { SmoothScroll } from './components/scroll/SmoothScroll'
+import { ScrollToTop } from './components/scroll/ScrollToTop'
 import { PageTransition } from './components/transitions/PageTransition'
 import Navbar from './components/navigation/Navbar'
 import Footer from './components/footer/Footer'
@@ -24,7 +25,8 @@ function App() {
     <Router>
       <CursorProvider>
         <SmoothScroll>
-          <div className="relative min-h-screen bg-[#050508] text-[#F4F4F6] overflow-x-hidden">
+          <div className="relative min-h-screen bg-[#0A1319] text-[#F4F4F6] overflow-x-hidden">
+            <ScrollToTop />
             <Navbar />
             <main className="relative z-10">
               <PageTransition>

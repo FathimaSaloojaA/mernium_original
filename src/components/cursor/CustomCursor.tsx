@@ -1,4 +1,4 @@
-import { useEffect, useState, createContext, useContext, ReactNode } from 'react'
+﻿import { useEffect, useState, createContext, useContext, ReactNode } from 'react'
 import { motion, useSpring, useMotionValue } from 'framer-motion'
 
 interface CursorContextType {
@@ -74,30 +74,30 @@ export const CursorProvider = ({ children }: { children: ReactNode }) => {
     default: {
       height: 14,
       width: 14,
-      backgroundColor: '#C7FF3D',
-      border: '1px solid rgba(199, 255, 61, 0.8)',
-      boxShadow: '0 0 15px rgba(199, 255, 61, 0.6)',
+      backgroundColor: '#71D5D9',
+      border: '1px solid rgba(113, 213, 217, 0.8)',
+      boxShadow: '0 0 15px rgba(113, 213, 217, 0.6)',
     },
     hover: {
       height: 60,
       width: 60,
-      backgroundColor: 'rgba(199, 255, 61, 0.15)',
-      border: '1.5px solid #C7FF3D',
-      boxShadow: '0 0 30px rgba(199, 255, 61, 0.4)',
+      backgroundColor: 'rgba(113, 213, 217, 0.15)',
+      border: '1.5px solid #71D5D9',
+      boxShadow: '0 0 30px rgba(113, 213, 217, 0.4)',
     },
     button: {
       height: 50,
       width: 50,
-      backgroundColor: 'rgba(81, 70, 229, 0.25)',
-      border: '1.5px solid #5146E5',
-      boxShadow: '0 0 30px rgba(81, 70, 229, 0.5)',
+      backgroundColor: 'rgba(89, 172, 183, 0.25)',
+      border: '1.5px solid #59ACB7',
+      boxShadow: '0 0 30px rgba(89, 172, 183, 0.5)',
     },
     drag: {
       height: 84,
       width: 84,
-      backgroundColor: 'rgba(9, 9, 11, 0.9)',
-      border: '2px solid #C7FF3D',
-      boxShadow: '0 0 45px rgba(199, 255, 61, 0.5)',
+      backgroundColor: 'rgba(10, 19, 25, 0.9)',
+      border: '2px solid #71D5D9',
+      boxShadow: '0 0 45px rgba(113, 213, 217, 0.5)',
     },
     hidden: {
       height: 0,

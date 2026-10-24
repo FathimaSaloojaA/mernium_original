@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Shield } from 'lucide-react'
 
 const teachers = [
@@ -25,9 +25,9 @@ const Teachers = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center space-x-2 px-5 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 font-mono text-xs uppercase tracking-widest"
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-[#59ACB7]/10 border border-[#59ACB7]/30 rounded-full text-[#71D5D9] font-mono text-xs uppercase tracking-widest"
           >
-            <Shield className="w-4 h-4 text-emerald-400" />
+            <Shield className="w-4 h-4 text-[#71D5D9]" />
             <span>SENIOR FACULTY &amp; MENTORS</span>
           </motion.div>
 
@@ -60,19 +60,19 @@ const Teachers = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glass-card rounded-3xl p-8 border border-emerald-500/30 glass-card-hover space-y-6"
+              className="glass-card rounded-3xl p-8 border border-[#59ACB7]/30 glass-card-hover space-y-6"
             >
               <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-amber-500/20 border border-emerald-500/40 flex items-center justify-center font-syne font-bold text-2xl text-emerald-400">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#59ACB7]/20 to-[#567B81]/20 border border-[#59ACB7]/40 flex items-center justify-center font-syne font-bold text-2xl text-[#71D5D9]">
                   {t.name[0]}
                 </div>
                 <div>
                   <h3 className="text-2xl font-syne font-bold text-white">{t.name}</h3>
-                  <p className="font-mono text-xs text-emerald-400">{t.role}</p>
+                  <p className="font-mono text-xs text-[#71D5D9]">{t.role}</p>
                 </div>
               </div>
 
-              <div className="font-mono text-xs text-amber-400 bg-amber-500/10 px-3 py-1.5 rounded-full border border-amber-500/20 w-fit">
+              <div className="font-mono text-xs text-[#567B81] bg-[#567B81]/10 px-3 py-1.5 rounded-full border border-[#567B81]/20 w-fit">
                 ⚡ {t.exp}
               </div>
 

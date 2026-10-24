@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Award, ArrowRight, Terminal } from 'lucide-react'
 
@@ -11,9 +11,9 @@ const InterviewTraining = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center space-x-2 px-5 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 font-mono text-xs uppercase tracking-widest"
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-[#59ACB7]/10 border border-[#59ACB7]/30 rounded-full text-[#71D5D9] font-mono text-xs uppercase tracking-widest"
           >
-            <Award className="w-4 h-4 text-emerald-400" />
+            <Award className="w-4 h-4 text-[#71D5D9]" />
             <span>ACCELERATOR TRACK</span>
           </motion.div>
 
@@ -60,9 +60,9 @@ const InterviewTraining = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="glass-card rounded-3xl p-8 border border-emerald-500/30 glass-card-hover space-y-4"
+                className="glass-card rounded-3xl p-8 border border-[#59ACB7]/30 glass-card-hover space-y-4"
               >
-                <div className="p-3 rounded-2xl bg-emerald-500/10 text-emerald-400 w-fit">
+                <div className="p-3 rounded-2xl bg-[#59ACB7]/10 text-[#71D5D9] w-fit">
                   <Terminal className="w-6 h-6" />
                 </div>
                 <h3 className="text-2xl font-syne font-bold text-white">{module.title}</h3>
@@ -73,7 +73,7 @@ const InterviewTraining = () => {
 
           <div className="text-center pt-8">
             <Link to="/apply" data-cursor="button">
-              <button className="px-8 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
+              <button className="px-8 py-4 rounded-full bg-gradient-to-r from-[#59ACB7] to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
                 <span>ENROLL IN INTERVIEW ACCELERATOR</span>
                 <ArrowRight className="w-5 h-5" />
               </button>

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion'
+﻿import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 import { ReactNode } from 'react'
 
@@ -28,14 +28,14 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
       <motion.div key={location.pathname} className="w-full">
         {/* Cinematic Entrance Overlay */}
         <motion.div
-          className="fixed inset-0 bg-[#050508] z-[9990] pointer-events-none flex flex-col justify-between p-8 md:p-16 border-b border-emerald-500/30"
+          className="fixed inset-0 bg-[#0A1319] z-[9990] pointer-events-none flex flex-col justify-between p-8 md:p-16 border-b border-[#59ACB7]/30"
           initial={{ scaleY: 1 }}
           animate={{ scaleY: 0 }}
           exit={{ scaleY: 1 }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           style={{ originY: 0 }}
         >
-          <div className="flex justify-between items-center text-xs font-mono text-emerald-400/60 uppercase tracking-widest">
+          <div className="flex justify-between items-center text-xs font-mono text-[#71D5D9]/60 uppercase tracking-widest">
             <span>[ SYSTEM ROUTING ]</span>
             <span>MERNIUM v3.0</span>
           </div>

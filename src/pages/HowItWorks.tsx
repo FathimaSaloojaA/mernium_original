@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Code2, Compass, CheckCircle2, Zap, Trophy, ArrowRight, Layers } from 'lucide-react'
 
@@ -49,9 +49,9 @@ const HowItWorks = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center space-x-2 px-5 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 font-mono text-xs uppercase tracking-widest"
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-[#59ACB7]/10 border border-[#59ACB7]/30 rounded-full text-[#71D5D9] font-mono text-xs uppercase tracking-widest"
           >
-            <Layers className="w-4 h-4 text-emerald-400" />
+            <Layers className="w-4 h-4 text-[#71D5D9]" />
             <span>THE 5-STEP SYSTEM</span>
           </motion.div>
 
@@ -89,10 +89,10 @@ const HowItWorks = () => {
                 className="glass-card rounded-3xl p-8 sm:p-10 border border-white/10 glass-card-hover flex flex-col md:flex-row items-start md:items-center justify-between gap-8 group"
               >
                 <div className="flex items-center space-x-6">
-                  <span className="text-4xl sm:text-6xl font-syne font-extrabold text-emerald-400/80 group-hover:text-emerald-300 transition-colors">
+                  <span className="text-4xl sm:text-6xl font-syne font-extrabold text-[#71D5D9]/80 group-hover:text-[#BDEAEB] transition-colors">
                     {step.num}
                   </span>
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-emerald-400 group-hover:scale-110 transition-transform">
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-[#71D5D9] group-hover:scale-110 transition-transform">
                     <IconComp className="w-8 h-8" />
                   </div>
                 </div>
@@ -101,7 +101,7 @@ const HowItWorks = () => {
                   <h3 className="text-2xl sm:text-3xl font-syne font-extrabold text-white">
                     {step.title}
                   </h3>
-                  <p className="font-mono text-xs text-amber-400 uppercase tracking-wider">
+                  <p className="font-mono text-xs text-[#567B81] uppercase tracking-wider">
                     {step.subtitle}
                   </p>
                   <p className="text-gray-300 text-sm font-sans leading-relaxed">
@@ -114,7 +114,7 @@ const HowItWorks = () => {
 
           <div className="text-center pt-8">
             <Link to="/apply" data-cursor="button">
-              <button className="px-8 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
+              <button className="px-8 py-4 rounded-full bg-gradient-to-r from-[#59ACB7] to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
                 <span>START AT STAGE 01</span>
                 <ArrowRight className="w-5 h-5" />
               </button>

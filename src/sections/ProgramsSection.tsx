@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Code, Cpu, Database, Award, ArrowUpRight, Check } from 'lucide-react'
 
@@ -56,7 +56,7 @@ export const ProgramsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center space-x-2 font-mono text-xs text-emerald-400 bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-500/20"
+              className="inline-flex items-center space-x-2 font-mono text-xs text-[#71D5D9] bg-[#59ACB7]/10 px-4 py-1.5 rounded-full border border-[#59ACB7]/20"
             >
               <Code className="w-3.5 h-3.5" />
               <span>05 // ACADEMIC PROGRAMS &amp; TRACKS</span>
@@ -67,7 +67,7 @@ export const ProgramsSection = () => {
           </div>
 
           <Link to="/courses" data-cursor="explore">
-            <button className="font-mono text-xs text-emerald-400 border-b border-emerald-400/50 pb-1 hover:border-emerald-400 flex items-center gap-2 transition-colors">
+            <button className="font-mono text-xs text-[#71D5D9] border-b border-[#71D5D9]/50 pb-1 hover:border-[#71D5D9] flex items-center gap-2 transition-colors">
               <span>EXPLORE ALL CURRICULUM MODULES</span>
               <ArrowUpRight className="w-4 h-4" />
             </button>
@@ -90,20 +90,20 @@ export const ProgramsSection = () => {
                 data-cursor-text="VIEW"
               >
                 {/* Background glow hover effect */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl group-hover:bg-emerald-500/15 transition-all pointer-events-none" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#59ACB7]/5 rounded-full blur-3xl group-hover:bg-[#59ACB7]/15 transition-all pointer-events-none" />
 
                 <div className="space-y-6 relative z-10">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20 uppercase tracking-widest">
+                    <span className="font-mono text-[10px] text-[#567B81] bg-[#567B81]/10 px-3 py-1 rounded-full border border-[#567B81]/20 uppercase tracking-widest">
                       {prog.subtitle}
                     </span>
-                    <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-emerald-400 group-hover:scale-110 group-hover:border-emerald-500/50 transition-all">
+                    <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-[#71D5D9] group-hover:scale-110 group-hover:border-[#59ACB7]/50 transition-all">
                       <IconComponent className="w-6 h-6" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <h3 className="text-2xl sm:text-3xl font-syne font-extrabold text-white group-hover:text-emerald-300 transition-colors">
+                    <h3 className="text-2xl sm:text-3xl font-syne font-extrabold text-white group-hover:text-[#BDEAEB] transition-colors">
                       {prog.title}
                     </h3>
                     <p className="text-gray-300 text-sm font-sans leading-relaxed">
@@ -115,7 +115,7 @@ export const ProgramsSection = () => {
                   <div className="space-y-2 pt-2">
                     {prog.highlights.map((h, i) => (
                       <div key={i} className="flex items-center space-x-2 text-xs font-mono text-gray-400">
-                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <Check className="w-3.5 h-3.5 text-[#71D5D9]" />
                         <span>{h}</span>
                       </div>
                     ))}
@@ -132,7 +132,7 @@ export const ProgramsSection = () => {
                     ))}
                   </div>
 
-                  <Link to="/courses" className="p-2.5 rounded-full bg-white/5 text-white group-hover:bg-emerald-500 group-hover:text-black transition-all">
+                  <Link to="/courses" className="p-2.5 rounded-full bg-white/5 text-white group-hover:bg-[#59ACB7] group-hover:text-black transition-all">
                     <ArrowUpRight className="w-5 h-5" />
                   </Link>
                 </div>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { ExternalLink, Github, FolderGit2 } from 'lucide-react'
 
 const projects = [
@@ -42,7 +42,7 @@ export const ProjectsGallerySection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center space-x-2 font-mono text-xs text-amber-400 bg-amber-500/10 px-4 py-1.5 rounded-full border border-amber-500/20"
+              className="inline-flex items-center space-x-2 font-mono text-xs text-[#567B81] bg-[#567B81]/10 px-4 py-1.5 rounded-full border border-[#567B81]/20"
             >
               <FolderGit2 className="w-3.5 h-3.5" />
               <span>06 // STUDENT SHOWCASE</span>
@@ -71,14 +71,14 @@ export const ProjectsGallerySection = () => {
             >
               {/* Left Column: Number & Title */}
               <div className="lg:col-span-5 space-y-4">
-                <div className="flex items-center space-x-3 font-mono text-xs text-emerald-400">
-                  <span className="text-2xl font-bold font-syne text-emerald-400/80">{proj.num}</span>
+                <div className="flex items-center space-x-3 font-mono text-xs text-[#71D5D9]">
+                  <span className="text-2xl font-bold font-syne text-[#71D5D9]/80">{proj.num}</span>
                   <span>// PRODUCTION APPLICATION</span>
                 </div>
-                <h3 className="text-3xl sm:text-4xl font-syne font-extrabold text-white group-hover:text-emerald-300 transition-colors">
+                <h3 className="text-3xl sm:text-4xl font-syne font-extrabold text-white group-hover:text-[#BDEAEB] transition-colors">
                   {proj.title}
                 </h3>
-                <p className="font-mono text-xs text-amber-400/90">
+                <p className="font-mono text-xs text-[#567B81]/90">
                   Engineered by {proj.student}
                 </p>
               </div>
@@ -104,7 +104,7 @@ export const ProjectsGallerySection = () => {
               <div className="lg:col-span-2 flex lg:flex-col items-center justify-end gap-4 border-t lg:border-t-0 lg:border-l border-white/10 pt-6 lg:pt-0 lg:pl-8">
                 <a
                   href={proj.link}
-                  className="p-3.5 rounded-full bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500 hover:text-black border border-emerald-500/40 transition-all flex items-center justify-center w-12 h-12"
+                  className="p-3.5 rounded-full bg-[#59ACB7]/20 text-[#BDEAEB] hover:bg-[#59ACB7] hover:text-black border border-[#59ACB7]/40 transition-all flex items-center justify-center w-12 h-12"
                   title="View Live Demo"
                 >
                   <ExternalLink className="w-5 h-5" />

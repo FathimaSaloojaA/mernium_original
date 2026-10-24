@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Database, Globe, Layers, ArrowRight, CheckCircle2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -11,9 +11,9 @@ const Courses = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center space-x-2 px-5 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 font-mono text-xs uppercase tracking-widest"
+            className="inline-flex items-center space-x-2 px-5 py-2 bg-[#59ACB7]/10 border border-[#59ACB7]/30 rounded-full text-[#71D5D9] font-mono text-xs uppercase tracking-widest"
           >
-            <Layers className="w-4 h-4 text-emerald-400" />
+            <Layers className="w-4 h-4 text-[#71D5D9]" />
             <span>05 // PRODUCTION CURRICULUM</span>
           </motion.div>
 
@@ -40,22 +40,22 @@ const Courses = () => {
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
-            className="glass-card rounded-3xl p-8 sm:p-10 border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 via-transparent to-amber-500/5 text-center space-y-6"
+            className="glass-card rounded-3xl p-8 sm:p-10 border border-[#59ACB7]/30 bg-gradient-to-br from-[#59ACB7]/10 via-transparent to-[#567B81]/5 text-center space-y-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             <h2 className="text-2xl sm:text-3xl font-syne font-bold text-white">THE 3-TIER TEACHING FORMULA</h2>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm font-mono text-gray-200">
-              <span className="px-5 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/40 text-emerald-300">
+              <span className="px-5 py-2 bg-[#59ACB7]/20 rounded-full border border-[#59ACB7]/40 text-[#BDEAEB]">
                 1. WHAT IT IS
               </span>
-              <ArrowRight className="w-5 h-5 text-emerald-400 hidden md:block" />
-              <span className="px-5 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/40 text-emerald-300">
+              <ArrowRight className="w-5 h-5 text-[#71D5D9] hidden md:block" />
+              <span className="px-5 py-2 bg-[#59ACB7]/20 rounded-full border border-[#59ACB7]/40 text-[#BDEAEB]">
                 2. WHY IT EXISTS &amp; TRADEOFFS
               </span>
-              <ArrowRight className="w-5 h-5 text-emerald-400 hidden md:block" />
-              <span className="px-5 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/40 text-emerald-300">
+              <ArrowRight className="w-5 h-5 text-[#71D5D9] hidden md:block" />
+              <span className="px-5 py-2 bg-[#59ACB7]/20 rounded-full border border-[#59ACB7]/40 text-[#BDEAEB]">
                 3. HOW SENIOR INTERVIEWERS ASK IT
               </span>
             </div>
@@ -73,7 +73,7 @@ const Courses = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center space-x-3 text-emerald-400">
+            <div className="flex items-center space-x-3 text-[#71D5D9]">
               <Globe className="w-8 h-8" />
               <h3 className="text-3xl font-syne font-extrabold text-white">FRONTEND CORE</h3>
             </div>
@@ -89,7 +89,7 @@ const Courses = () => {
                 'Production web app deployments',
               ].map((topic, index) => (
                 <div key={index} className="flex items-center space-x-3 text-gray-300 text-sm font-sans">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#71D5D9] shrink-0" />
                   <span>{topic}</span>
                 </div>
               ))}
@@ -103,7 +103,7 @@ const Courses = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center space-x-3 text-emerald-400">
+            <div className="flex items-center space-x-3 text-[#71D5D9]">
               <Database className="w-8 h-8" />
               <h3 className="text-3xl font-syne font-extrabold text-white">BACKEND CORE</h3>
             </div>
@@ -119,7 +119,7 @@ const Courses = () => {
                 'Docker containerization & AWS deployment',
               ].map((topic, index) => (
                 <div key={index} className="flex items-center space-x-3 text-gray-300 text-sm font-sans">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#71D5D9] shrink-0" />
                   <span>{topic}</span>
                 </div>
               ))}
@@ -131,7 +131,7 @@ const Courses = () => {
       {/* CTA */}
       <section className="py-12 text-center">
         <Link to="/apply" data-cursor="button">
-          <button className="px-8 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
+          <button className="px-8 py-4 rounded-full bg-gradient-to-r from-[#59ACB7] to-teal-500 text-black font-syne font-bold text-base shadow-xl glow-emerald inline-flex items-center gap-2 hover:scale-105 transition-all">
             <span>ENROLL IN FULL CURRICULUM</span>
             <ArrowRight className="w-5 h-5" />
           </button>
