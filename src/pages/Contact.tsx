@@ -1,7 +1,11 @@
 ﻿import { motion } from 'framer-motion'
-import { MessageCircle, Mail, Phone, Instagram, ArrowRight, Terminal } from 'lucide-react'
+import { MessageCircle, Mail, Phone, Instagram, ArrowRight, Terminal, Send } from 'lucide-react'
+import { ENQUIRY_INBOX } from '../lib/enquiry'
+import { useEnquiryForm } from '../components/forms/useEnquiryForm'
+import { FormAlert, FormField, Honeypot, SubmitButton, SuccessPanel } from '../components/forms/Fields'
 
 const Contact = () => {
+  const form = useEnquiryForm('contact')
   return (
     <div className="relative pt-28 pb-20 overflow-x-hidden">
       {/* Hero Section */}
@@ -49,7 +53,7 @@ const Contact = () => {
               icon: Mail,
               title: 'Official Email',
               description: 'Send inquiries & application audits',
-              link: 'mailto:admissions@mernium.edu',
+              link: `mailto:${ENQUIRY_INBOX}`,
               action: 'Send Email',
             },
             {
@@ -97,6 +101,57 @@ const Contact = () => {
               </motion.a>
             )
           })}
+        </div>
+      </section>
+
+      {/* Enquiry Form */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          {form.status === 'success' ? (
+            <SuccessPanel
+              title="ENQUIRY RECEIVED!"
+              message="Thank you for contacting MERNIUM! Your enquiry has been received. Our team will get in touch with you shortly."
+              note={form.acknowledged ? 'A confirmation has been sent to your email address.' : 'Your confirmation email may take a little longer to arrive.'}
+              onReset={form.reset}
+              resetLabel="Send another enquiry"
+            />
+          ) : (
+            <motion.form
+              onSubmit={form.onSubmit}
+              noValidate
+              aria-busy={form.submitting}
+              className="relative glass-card rounded-3xl p-8 sm:p-12 border border-white/10 space-y-6 shadow-2xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="space-y-2">
+                <h2 className="text-3xl font-syne font-extrabold text-white">SEND AN ENQUIRY</h2>
+                <p className="text-gray-400 text-sm font-sans">
+                  Questions about programs, batches or admissions? Write to us and our team will reply by email.
+                </p>
+              </div>
+              <Honeypot inputRef={form.honeypot} />
+
+              <div className="grid sm:grid-cols-2 gap-6">
+                <FormField {...form.field('name')} label="FULL NAME" placeholder="John Doe" autoComplete="name" />
+                <FormField {...form.field('email')} label="EMAIL ADDRESS" type="email" inputMode="email" placeholder="john@example.com" autoComplete="email" />
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-6">
+                <FormField {...form.field('phone')} label="PHONE NUMBER" type="tel" inputMode="tel" placeholder="+91 98765 43210" autoComplete="tel" />
+                <FormField {...form.field('interest')} label="PROGRAM OF INTEREST" selectPlaceholder="Select a program..." />
+              </div>
+
+              <FormField {...form.field('message')} label="YOUR ENQUIRY" rows={4} placeholder="Tell us what you would like to know..." />
+
+              <FormAlert message={form.formError} />
+
+              <SubmitButton submitting={form.submitting} icon={<Send className="w-5 h-5" />}>
+                SEND ENQUIRY
+              </SubmitButton>
+            </motion.form>
+          )}
         </div>
       </section>
     </div>

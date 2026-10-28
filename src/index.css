@@ -308,6 +308,57 @@ html[data-theme='light'] {
   }
 }
 
+/* ── Form fields (enquiry + application forms) ── */
+:root {
+  --field-bg: rgba(255, 255, 255, 0.05);
+  --field-border: rgba(255, 255, 255, 0.15);
+  --field-text: #ffffff;
+  --field-placeholder: #6b7280;
+  --field-label: #d1d5db;
+  --field-focus: #71D5D9;
+  --field-focus-ring: rgba(113, 213, 217, 0.18);
+  --field-error: #ff9b8f;
+  --field-error-bg: rgba(255, 155, 143, 0.07);
+  --field-error-ring: rgba(255, 155, 143, 0.2);
+  --field-select-bg: #0A1319;
+}
+
+html.light,
+html[data-theme='light'] {
+  --field-bg: #ffffff;
+  --field-border: rgba(17, 88, 107, 0.25);
+  --field-text: #0A1319;
+  --field-placeholder: #567B81;
+  --field-label: #3F616A;
+  --field-focus: #11586B;
+  --field-focus-ring: rgba(17, 88, 107, 0.15);
+  --field-error: #b42318;
+  --field-error-bg: rgba(180, 35, 24, 0.05);
+  --field-error-ring: rgba(180, 35, 24, 0.15);
+  --field-select-bg: #ffffff;
+}
+
+.mn-label { color: var(--field-label); }
+
+.mn-field {
+  width: 100%;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+  color: var(--field-text);
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+.mn-field::placeholder { color: var(--field-placeholder); }
+.mn-field:focus { outline: none; border-color: var(--field-focus); box-shadow: 0 0 0 3px var(--field-focus-ring); }
+.mn-field[aria-invalid='true'] { border-color: var(--field-error); background: var(--field-error-bg); }
+.mn-field[aria-invalid='true']:focus { box-shadow: 0 0 0 3px var(--field-error-ring); }
+select.mn-field { background-color: var(--field-select-bg); }
+select.mn-field[aria-invalid='true'] { background-image: linear-gradient(var(--field-error-bg), var(--field-error-bg)); }
+.mn-field:disabled { opacity: 0.6; cursor: not-allowed; }
+.mn-error { color: var(--field-error); }
+
 /* ── Illustration system (diagrams across pages) ── */
 :root {
   --viz-line: 113 213 217;

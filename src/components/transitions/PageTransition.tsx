@@ -1,6 +1,7 @@
 ﻿import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 import { ReactNode } from 'react'
+import { BrandMark } from '../brand/BrandMark'
 
 export const PageTransition = ({ children }: { children: ReactNode }) => {
   const location = useLocation()
@@ -37,7 +38,10 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
         >
           <div className="flex justify-between items-center text-xs font-mono text-[#71D5D9]/60 uppercase tracking-widest">
             <span>[ SYSTEM ROUTING ]</span>
-            <span>MERNIUM v3.0</span>
+            <span className="flex items-center gap-2">
+              <BrandMark size={20} />
+              MERNIUM v3.0
+            </span>
           </div>
 
           <div className="overflow-hidden py-4">

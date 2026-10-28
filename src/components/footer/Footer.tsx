@@ -1,5 +1,6 @@
 ﻿import { Link } from 'react-router-dom'
 import { Terminal, Shield, Github, Twitter, Linkedin, Mail } from 'lucide-react'
+import { BrandMark } from '../brand/BrandMark'
 
 export const Footer = () => {
   return (
@@ -10,9 +11,7 @@ export const Footer = () => {
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-6">
             <Link to="/" className="flex items-center space-x-3 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#59ACB7]/20 to-[#11586B]/30 border border-[#59ACB7]/40 flex items-center justify-center font-syne font-extrabold text-xl text-[#71D5D9]">
-                M
-              </div>
+              <BrandMark size={40} />
               <span className="font-syne font-extrabold text-2xl tracking-tight text-white group-hover:text-[#BDEAEB] transition-colors">
                 MERNIUM
               </span>

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Menu, Zap } from 'lucide-react'
 import { FullscreenMenu } from './FullscreenMenu'
+import { BrandMark } from '../brand/BrandMark'
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -44,12 +45,7 @@ export const Navbar = () => {
             className="flex items-center space-x-3 group"
             data-cursor="pointer"
           >
-            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-[#59ACB7]/20 to-[#11586B]/30 border border-[#59ACB7]/40 flex items-center justify-center overflow-hidden group-hover:border-[#71D5D9] transition-colors">
-              <span className="font-syne font-extrabold text-lg text-[#71D5D9] group-hover:scale-110 transition-transform">
-                M
-              </span>
-              <div className="absolute inset-0 bg-[#71D5D9]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
+            <BrandMark size={40} className="group-hover:scale-110 transition-transform" />
             <div className="flex flex-col">
               <span className="font-syne font-extrabold text-xl tracking-tight text-white group-hover:text-[#BDEAEB] transition-colors">
                 MERNIUM
