@@ -43,7 +43,19 @@ function apiDevServer(): Plugin {
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   // Expose server-only variables (SMTP_*, MAIL_FROM) to the dev API, never to client code.
-  for (const [key, value] of Object.entries(loadEnv(mode, process.cwd(), ''))) process.env[key] ??= value
+  // Vite restarts in the same process when an .env file changes, and loadEnv lets
+  // existing process.env values override the files — so drop the keys injected on
+  // the previous load first. Variables set in the real shell still win.
+  const injected: Set<string> = ((globalThis as { __merniumEnvKeys?: Set<string> }).__merniumEnvKeys ??= new Set())
+  for (const key of injected) delete process.env[key]
+  injected.clear()
+  const env = loadEnv(mode, process.cwd(), '')
+  for (const [key, value] of Object.entries(env)) {
+    if (process.env[key] === undefined) {
+      process.env[key] = value
+      injected.add(key)
+    }
+  }
   return {
     plugins: [react(), apiDevServer()],
   }
