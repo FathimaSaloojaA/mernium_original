@@ -19,10 +19,10 @@ const teachers = [
 
 const Teachers = () => {
   return (
-    <div className="relative pt-28 pb-20 overflow-x-hidden">
+    <div className="relative pt-28 pb-20">
       {/* Hero */}
       <section className="min-h-[50vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
+        <div className="w-full min-w-0 max-w-4xl mx-auto text-center space-y-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -33,7 +33,7 @@ const Teachers = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase"
+            className="text-page-title [--title-fit:12.2] font-syne font-extrabold tracking-tight text-white uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -60,7 +60,7 @@ const Teachers = () => {
 
       {/* Grid */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {teachers.map((t, idx) => (
             <motion.div
               key={idx}
@@ -68,14 +68,14 @@ const Teachers = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glass-card rounded-3xl p-8 border border-[#59ACB7]/30 glass-card-hover space-y-6"
+              className="glass-card rounded-3xl p-6 sm:p-8 min-w-0 border border-[#59ACB7]/30 glass-card-hover space-y-6"
             >
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#59ACB7]/20 to-[#567B81]/20 border border-[#59ACB7]/40 flex items-center justify-center font-syne font-bold text-2xl text-[#71D5D9]">
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 shrink-0 rounded-2xl bg-gradient-to-br from-[#59ACB7]/20 to-[#567B81]/20 border border-[#59ACB7]/40 flex items-center justify-center font-syne font-bold text-2xl text-[#71D5D9]">
                   {t.name[0]}
                 </div>
-                <div>
-                  <h3 className="text-2xl font-syne font-bold text-white">{t.name}</h3>
+                <div className="min-w-0">
+                  <h3 className="text-xl sm:text-2xl font-syne font-bold text-white">{t.name}</h3>
                   <p className="font-mono text-xs text-[#71D5D9]">{t.role}</p>
                 </div>
               </div>

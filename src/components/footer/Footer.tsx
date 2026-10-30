@@ -1,6 +1,7 @@
 ﻿import { Link } from 'react-router-dom'
 import { Terminal, Shield, Github, Twitter, Linkedin, Mail } from 'lucide-react'
 import { BrandMark } from '../brand/BrandMark'
+import { ENQUIRY_INBOX } from '../../lib/enquiry'
 
 export const Footer = () => {
   return (
@@ -57,11 +58,11 @@ export const Footer = () => {
               Direct Inquiries &amp; Admissions:
             </p>
             <a
-              href="mailto:admissions@mernium.edu"
-              className="inline-flex items-center space-x-2 text-sm font-mono text-[#71D5D9] hover:text-[#BDEAEB] transition-colors"
+              href={`mailto:${ENQUIRY_INBOX}`}
+              className="inline-flex max-w-full items-center gap-2 text-sm font-mono text-[#71D5D9] hover:text-[#BDEAEB] transition-colors"
             >
-              <Mail className="w-4 h-4" />
-              <span>admissions@mernium.edu</span>
+              <Mail className="w-4 h-4 shrink-0" aria-hidden="true" />
+              <span className="min-w-0 [overflow-wrap:anywhere]">{ENQUIRY_INBOX}</span>
             </a>
 
             <div className="flex items-center space-x-3 pt-2">
@@ -80,12 +81,12 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-[#BDEAEB]/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#567B81] gap-4">
-          <p>Â© {new Date().getFullYear()} MERNIUM DIGITAL INSTITUTION. ALL RIGHTS RESERVED.</p>
+          <p>© {new Date().getFullYear()} MERNIUM DIGITAL INSTITUTION. ALL RIGHTS RESERVED.</p>
           <div className="flex items-center space-x-6">
             <span className="hover:text-gray-300 cursor-pointer">PRIVACY POLICY</span>
-            <span>â€¢</span>
+            <span aria-hidden="true">•</span>
             <span className="hover:text-gray-300 cursor-pointer">TERMS OF READINESS</span>
-            <span>â€¢</span>
+            <span aria-hidden="true">•</span>
             <span className="text-[#71D5D9]/80">3D ENGINE v3.0</span>
           </div>
         </div>

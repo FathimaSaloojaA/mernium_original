@@ -28,7 +28,7 @@ export function SpeechStructure() {
   const { root } = useReveal()
   return (
     <VizFrame label="ANSWER SHAPE // BEFORE → AFTER" caption="Coaching turns hesitant, looping answers into short, structured explanations interviewers can follow.">
-      <motion.div {...root} className="grid items-center gap-6 md:grid-cols-[1fr_auto_1.3fr]">
+      <motion.div {...root} className="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_auto_1.3fr]">
         <div className="space-y-3">
           <p className="viz-ink-dim font-mono text-[10px] uppercase tracking-[0.25em]">Before // unstructured</p>
           <svg viewBox="0 0 370 120" className="w-full" aria-hidden="true">

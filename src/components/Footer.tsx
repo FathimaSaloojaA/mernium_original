@@ -80,7 +80,7 @@ const Footer = () => {
             {/* Social Links */}
             <div className="mt-6 flex space-x-4">
               <a
-                href="https://wa.me/your-number"
+                href="https://wa.me/917994774154"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#71D5D9] transition-colors"
@@ -89,14 +89,14 @@ const Footer = () => {
                 <MessageCircle size={20} />
               </a>
               <a
-                href="mailto:contact@mernium.com"
+                href="mailto:mernium.learn@gmail.com"
                 className="text-gray-400 hover:text-[#71D5D9] transition-colors"
                 aria-label="Email"
               >
                 <Mail size={20} />
               </a>
               <a
-                href="https://instagram.com/mernium"
+                href="https://www.instagram.com/mernium.learn/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#71D5D9] transition-colors"
@@ -105,7 +105,7 @@ const Footer = () => {
                 <Instagram size={20} />
               </a>
               <a
-                href="tel:+1234567890"
+                href="tel:+917994774154"
                 className="text-gray-400 hover:text-[#71D5D9] transition-colors"
                 aria-label="Phone"
               >

@@ -58,7 +58,7 @@ export function CodeWorkbench() {
           <span className="viz-ink-dim ml-3 font-mono text-[11px]">routes/courses.ts</span>
         </div>
 
-        <div className="grid md:grid-cols-[1.7fr_1fr]">
+        <div className="grid grid-cols-1 md:grid-cols-[1.7fr_1fr]">
           <div className="space-y-1.5 p-4 font-mono text-[11px] leading-relaxed sm:p-6 sm:text-[13px]">
             {WRITTEN.map((tokens, i) => (
               <Line key={i} n={i + 1} tokens={tokens} />

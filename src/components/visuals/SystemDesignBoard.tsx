@@ -40,7 +40,7 @@ export function SystemDesignBoard() {
   const { root } = useReveal()
   return (
     <VizFrame label="WHITEBOARD DRILL // DESIGN A RATE-LIMITED API" caption="You sketch it, defend it, and get scored on how you think — not just on the final diagram.">
-      <div className="grid gap-6 lg:grid-cols-[1.7fr_1fr]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.7fr_1fr]">
         <div className="-mx-1 overflow-x-auto px-1">
         <motion.svg viewBox="0 0 750 400" className="w-full min-w-[540px]" role="img" aria-label="System design sketch: client, rate limiter, load balancer, two API servers, Redis cache and MongoDB" {...root}>
           <defs>

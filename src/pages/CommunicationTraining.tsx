@@ -5,10 +5,10 @@ import { SpeechStructure } from '../components/visuals/SpeechStructure'
 
 const CommunicationTraining = () => {
   return (
-    <div className="relative pt-28 pb-20 overflow-x-hidden">
+    <div className="relative pt-28 pb-20">
       {/* Hero */}
       <section className="min-h-[50vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
+        <div className="w-full min-w-0 max-w-4xl mx-auto text-center space-y-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -19,7 +19,7 @@ const CommunicationTraining = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase"
+            className="text-page-title [--title-fit:15.4] font-syne font-extrabold tracking-tight text-white uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -40,7 +40,7 @@ const CommunicationTraining = () => {
       {/* Pillars */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: 'Technical Speech Structure',

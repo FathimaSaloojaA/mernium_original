@@ -7,10 +7,10 @@ import { FormAlert, FormField, Honeypot, SubmitButton, SuccessPanel } from '../c
 const Contact = () => {
   const form = useEnquiryForm('contact')
   return (
-    <div className="relative pt-28 pb-20 overflow-x-hidden">
+    <div className="relative pt-28 pb-20">
       {/* Hero Section */}
       <section className="min-h-[45vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto text-center space-y-4">
+        <div className="w-full min-w-0 max-w-4xl mx-auto text-center space-y-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -21,7 +21,7 @@ const Contact = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase"
+            className="text-page-title font-syne font-extrabold tracking-tight text-white uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -40,7 +40,7 @@ const Contact = () => {
 
       {/* Contact Cards */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
               icon: MessageCircle,
@@ -126,19 +126,19 @@ const Contact = () => {
               viewport={{ once: true }}
             >
               <div className="space-y-2">
-                <h2 className="text-3xl font-syne font-extrabold text-white">SEND AN ENQUIRY</h2>
+                <h2 className="text-[min(1.875rem,calc((100vw-6rem)/10.3))] sm:text-3xl font-syne font-extrabold text-white">SEND AN ENQUIRY</h2>
                 <p className="text-gray-400 text-sm font-sans">
                   Questions about programs, batches or admissions? Write to us and our team will reply by email.
                 </p>
               </div>
               <Honeypot inputRef={form.honeypot} />
 
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <FormField {...form.field('name')} label="FULL NAME" placeholder="John Doe" autoComplete="name" />
                 <FormField {...form.field('email')} label="EMAIL ADDRESS" type="email" inputMode="email" placeholder="john@example.com" autoComplete="email" />
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <FormField {...form.field('phone')} label="PHONE NUMBER" type="tel" inputMode="tel" placeholder="+91 98765 43210" autoComplete="tel" />
                 <FormField {...form.field('interest')} label="PROGRAM OF INTEREST" selectPlaceholder="Select a program..." />
               </div>

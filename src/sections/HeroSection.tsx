@@ -21,14 +21,14 @@ export const HeroSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[120vh] pt-32 pb-24 flex items-center overflow-hidden noise-bg border-b border-paper/10"
+      className="relative min-h-[100svh] lg:min-h-[120vh] pt-28 sm:pt-32 pb-16 sm:pb-24 flex items-center overflow-hidden noise-bg border-b border-paper/10"
     >
       {/* Abstract Background Ambient Lights & Noise */}
       <div className="absolute top-1/3 left-10 w-[500px] h-[500px] bg-acid/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[600px] h-[600px] bg-cobalt/15 rounded-full blur-[180px] pointer-events-none" />
 
       {/* Neural Core 3D scene (decorative, never intercepts input) */}
-      <div className="absolute inset-x-0 top-0 h-full max-h-[120vh] z-0 pointer-events-none">
+      <div className="absolute inset-x-0 top-0 h-full max-h-[100svh] lg:max-h-[120vh] z-0 pointer-events-none">
         <NeuralCore phase={reducedMotion ? 2 : phase} />
       </div>
 
@@ -74,25 +74,25 @@ export const HeroSection = () => {
 
           {/* Magnetic Interaction Buttons */}
           <motion.div
-            className="flex flex-wrap items-center gap-6 pt-6"
+            className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-6 pt-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <Link to="/apply" data-cursor="button">
+            <Link to="/apply" data-cursor="button" className="w-full sm:w-auto">
               <button
                 ref={magneticCtaRef}
-                className="px-10 py-5 bg-acid text-ink font-syne font-extrabold text-base tracking-wider uppercase flex items-center space-x-3 shadow-acid-glow hover:bg-acid-hover transition-colors group"
+                className="w-full sm:w-auto justify-center px-6 sm:px-10 py-4 sm:py-5 bg-acid text-ink font-syne font-extrabold text-sm sm:text-base tracking-wider uppercase whitespace-nowrap flex items-center gap-3 shadow-acid-glow hover:bg-acid-hover transition-colors group"
               >
                 <span>ENTER EXPERIENCE</span>
                 <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
             </Link>
 
-            <Link to="/mernmade" data-cursor="explore">
+            <Link to="/mernmade" data-cursor="explore" className="w-full sm:w-auto">
               <button
                 ref={magneticSecondaryRef}
-                className="px-8 py-5 border border-paper/30 text-paper font-mono text-xs uppercase tracking-widest bg-ink/60 backdrop-blur-md hover:border-acid hover:text-acid transition-colors flex items-center space-x-2"
+                className="w-full sm:w-auto justify-center px-6 sm:px-8 py-4 sm:py-5 min-h-[44px] border border-paper/30 text-paper font-mono text-xs uppercase tracking-widest bg-ink/60 backdrop-blur-md hover:border-acid hover:text-acid transition-colors flex items-center space-x-2"
               >
                 <Compass className="w-4 h-4 text-acid" />
                 <span>UNDERSTAND MERNMADE</span>

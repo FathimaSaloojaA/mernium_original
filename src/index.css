@@ -47,6 +47,11 @@
     background-color: #71D5D9;
     color: #0A1319;
   }
+
+  /* Last-resort wrapping for a single word wider than its container (narrow phones). */
+  h1, h2, h3, h4 {
+    overflow-wrap: break-word;
+  }
 }
 
 /* â”€â”€ Typography & Outline Utilities â”€â”€ */
@@ -57,6 +62,15 @@
 
   .text-mono {
     font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Page hero titles. Syne Extrabold runs ~1.15em per capital, so a long word can be wider
+     than its column. Each title sets --title-fit to its longest word's width in em (+~4%),
+     and the size is the column width (min(viewport − padding, max-w-4xl)) divided by it,
+     capped at text-7xl. Titles whose words are all ≤ 9.8em use the default. */
+  .text-page-title {
+    font-size: clamp(1rem, calc(min(100vw - 3rem, 56rem) / var(--title-fit, 10.2)), 4.5rem);
+    line-height: 1.05;
   }
 
   /* Outline variants using new palette */
@@ -342,6 +356,7 @@ html[data-theme='light'] {
 
 .mn-field {
   width: 100%;
+  min-height: 44px;
   border-radius: 0.75rem;
   padding: 0.75rem 1rem;
   background: var(--field-bg);

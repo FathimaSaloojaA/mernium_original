@@ -7,10 +7,10 @@ const Apply = () => {
   const form = useEnquiryForm('application')
 
   return (
-    <div className="relative pt-28 pb-20 overflow-x-hidden">
+    <div className="relative pt-28 pb-20">
       {/* Hero Section */}
       <section className="min-h-[40vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto text-center space-y-4">
+        <div className="w-full min-w-0 max-w-4xl mx-auto text-center space-y-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -21,7 +21,7 @@ const Apply = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase"
+            className="text-page-title font-syne font-extrabold tracking-tight text-white uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -71,7 +71,7 @@ const Apply = () => {
               <Terminal className="w-5 h-5 text-[#71D5D9]" />
               WHAT WE EXPECT FROM APPLICANTS
             </h2>
-            <div className="grid sm:grid-cols-2 gap-4 text-sm font-sans text-gray-300">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-sans text-gray-300">
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="w-4 h-4 text-[#71D5D9] shrink-0" />
                 <span>Daily live session attendance</span>
@@ -114,15 +114,15 @@ const Apply = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-syne font-extrabold text-white">CANDIDATE ADMISSION FORM</h2>
+              <h2 className="text-[min(1.875rem,calc((100vw-6rem)/10.3))] sm:text-3xl font-syne font-extrabold text-white">CANDIDATE ADMISSION FORM</h2>
               <Honeypot inputRef={form.honeypot} />
 
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <FormField {...form.field('name')} label="FULL NAME" placeholder="John Doe" autoComplete="name" />
                 <FormField {...form.field('email')} label="EMAIL ADDRESS" type="email" inputMode="email" placeholder="john@example.com" autoComplete="email" />
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <FormField {...form.field('phone')} label="PHONE NUMBER" type="tel" inputMode="tel" placeholder="+91 98765 43210" autoComplete="tel" />
                 <FormField {...form.field('batch')} label="PREFERRED BATCH" selectPlaceholder="Select a batch..." />
               </div>

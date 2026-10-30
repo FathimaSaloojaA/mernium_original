@@ -19,7 +19,7 @@ export function GrowthLoop() {
   const { root } = useReveal()
   return (
     <VizFrame label="TWO MODELS // COMPLETION VS READINESS" caption="A syllabus ends when time runs out. A readiness loop ends when you can build it and explain it under pressure.">
-      <motion.div {...root} className="grid gap-6 md:grid-cols-2">
+      <motion.div {...root} className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="viz-card space-y-3 rounded-2xl p-5">
           <p className="viz-ink-dim font-mono text-[10px] uppercase tracking-[0.25em]">Traditional // linear syllabus</p>
           <svg viewBox="0 0 400 220" className="w-full" aria-hidden="true">

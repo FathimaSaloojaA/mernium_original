@@ -23,10 +23,10 @@ const batches = [
 
 const Batches = () => {
   return (
-    <div className="relative pt-28 pb-20 overflow-x-hidden">
+    <div className="relative pt-28 pb-20">
       {/* Hero */}
       <section className="min-h-[50vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
+        <div className="w-full min-w-0 max-w-4xl mx-auto text-center space-y-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -37,7 +37,7 @@ const Batches = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase"
+            className="text-page-title [--title-fit:10.8] font-syne font-extrabold tracking-tight text-white uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -65,10 +65,10 @@ const Batches = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glass-card rounded-3xl p-8 sm:p-10 border border-[#59ACB7]/30 glass-card-hover flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+              className="glass-card rounded-3xl p-6 sm:p-10 border border-[#59ACB7]/30 glass-card-hover flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8"
             >
-              <div className="space-y-3 max-w-2xl">
-                <div className="flex items-center space-x-3 font-mono text-xs">
+              <div className="space-y-3 max-w-2xl min-w-0 w-full md:w-auto">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3 font-mono text-xs">
                   <span className="bg-[#59ACB7]/20 text-[#71D5D9] px-3 py-1 rounded-full border border-[#59ACB7]/30 uppercase">
                     {batch.status}
                   </span>
@@ -77,11 +77,11 @@ const Batches = () => {
                   </span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-syne font-extrabold text-white">
+                <h3 className="text-[min(1.5rem,calc((100vw-5.5rem)/13.2))] sm:text-3xl font-syne font-extrabold text-white">
                   {batch.name}
                 </h3>
 
-                <div className="flex flex-wrap gap-6 font-mono text-xs text-gray-300 pt-2">
+                <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-gray-300 pt-2">
                   <span className="flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-[#71D5D9]" />
                     STARTS: {batch.start}
@@ -97,8 +97,8 @@ const Batches = () => {
                 </div>
               </div>
 
-              <Link to="/apply" data-cursor="button">
-                <button className="px-6 py-3 rounded-full bg-[#59ACB7] hover:bg-[#71D5D9] text-black font-syne font-bold text-sm tracking-wider uppercase flex items-center space-x-2 transition-all shadow-lg glow-emerald">
+              <Link to="/apply" data-cursor="button" className="w-full md:w-auto shrink-0">
+                <button className="w-full md:w-auto justify-center min-h-[44px] px-6 py-3 rounded-full bg-[#59ACB7] hover:bg-[#71D5D9] text-black font-syne font-bold text-sm tracking-wider uppercase whitespace-nowrap flex items-center gap-2 transition-all shadow-lg glow-emerald">
                   <span>RESERVE SEAT</span>
                   <Zap className="w-4 h-4" />
                 </button>

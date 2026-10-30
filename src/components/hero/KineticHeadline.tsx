@@ -401,7 +401,7 @@ export const KineticHeadline = memo(function KineticHeadline({
 
   if (reducedMotion) {
     return (
-      <h1 className="kt-stage font-syne font-extrabold uppercase leading-[0.95] tracking-tight text-[clamp(2.5rem,8vw,6rem)] select-none">
+      <h1 className="kt-stage font-syne font-extrabold uppercase leading-[0.95] tracking-tight text-[clamp(1.75rem,10.5vw-0.5rem,6rem)] select-none">
         <span className="sr-only">Build. Learn. Become.</span>
         <span aria-hidden="true" className="kt-rig block space-y-1" style={{ transform: `rotateX(${BASE_TILT.x}deg) rotateY(${BASE_TILT.y}deg)` }}>
           {HEADLINE_WORDS.map((w) => (
@@ -415,7 +415,7 @@ export const KineticHeadline = memo(function KineticHeadline({
   }
 
   return (
-    <h1 className="kt-stage relative font-syne font-extrabold uppercase leading-none tracking-tight text-[clamp(2.75rem,11vw,7.5rem)] h-[1.15em] select-none">
+    <h1 className="kt-stage relative font-syne font-extrabold uppercase leading-none tracking-tight text-[clamp(2rem,12vw-0.5rem,7.5rem)] h-[1.15em] select-none">
       <span className="sr-only">Build. Learn. Become.</span>
       <motion.span aria-hidden="true" className="kt-rig absolute inset-0 block" style={{ rotateX, rotateY }}>
         <AnimatePresence initial>

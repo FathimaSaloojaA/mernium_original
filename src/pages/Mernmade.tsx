@@ -14,11 +14,11 @@ const CRITERIA = [
 
 const Mernmade = () => {
   return (
-    <div className="relative pt-28 pb-20 overflow-x-hidden">
+    <div className="relative pt-28 pb-20">
       {/* Hero Section */}
       <section className="min-h-[55vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#567B81]/10 rounded-full blur-[160px] pointer-events-none" />
-        <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(600px,90vw)] h-[min(600px,90vw)] bg-[#567B81]/10 rounded-full blur-[160px] pointer-events-none" />
+        <div className="w-full min-w-0 max-w-4xl mx-auto text-center space-y-6 relative z-10">
           <motion.div
             className="inline-flex items-center space-x-2 px-5 py-2 bg-gradient-to-r from-[#59ACB7]/20 to-[#567B81]/20 border border-[#59ACB7]/30 rounded-full text-[#71D5D9] font-mono text-xs uppercase tracking-widest"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -30,7 +30,7 @@ const Mernmade = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase leading-tight"
+            className="text-page-title font-syne font-extrabold tracking-tight text-white uppercase leading-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -53,7 +53,7 @@ const Mernmade = () => {
       {/* Grid Comparison */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {[
               {
                 icon: XCircle,
@@ -113,7 +113,7 @@ const Mernmade = () => {
               <h2 className="text-3xl font-syne font-bold text-white">THE MERNMADE BADGE CRITERIA</h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {CRITERIA.map((crit, cIdx) => (
                 <div key={cIdx} className="glass-card rounded-2xl p-6 border border-white/10 space-y-2">
                   <div className="flex items-center space-x-2 text-[#71D5D9] font-mono text-xs">

@@ -5,11 +5,11 @@ import { GrowthLoop } from '../components/visuals/GrowthLoop'
 
 const About = () => {
   return (
-    <div className="relative pt-28 pb-20 overflow-x-hidden">
+    <div className="relative pt-28 pb-20">
       {/* Hero Section */}
       <section className="min-h-[50vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#59ACB7]/10 rounded-full blur-[140px] pointer-events-none" />
-        <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(500px,90vw)] h-[min(500px,90vw)] bg-[#59ACB7]/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="w-full min-w-0 max-w-4xl mx-auto text-center space-y-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ const About = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase"
+            className="text-page-title font-syne font-extrabold tracking-tight text-white uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -52,7 +52,7 @@ const About = () => {
               <AlertTriangle className="w-6 h-6" />
               <h2 className="text-3xl font-syne font-bold text-white">THE TRADITIONAL INSTITUTION FAILURE</h2>
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 'Certificate-focused, not skill-focused',
                 'Time-based completion, not readiness-based',
@@ -72,7 +72,7 @@ const About = () => {
           <GrowthLoop />
 
           {/* Pillars */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
                 icon: Target,

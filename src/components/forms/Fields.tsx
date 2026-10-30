@@ -197,7 +197,7 @@ export function SuccessPanel({
       <button
         type="button"
         onClick={onReset}
-        className="mt-2 inline-flex items-center gap-2 rounded-full border border-[#59ACB7]/40 px-5 py-2 font-mono text-xs uppercase tracking-widest text-[#71D5D9] hover:border-[#71D5D9] transition-colors"
+        className="mt-2 inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[#59ACB7]/40 px-5 py-2 font-mono text-xs uppercase tracking-widest text-[#71D5D9] hover:border-[#71D5D9] transition-colors"
         data-cursor="button"
       >
         {resetLabel}

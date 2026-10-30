@@ -6,10 +6,10 @@ import { CodeWorkbench } from '../components/visuals/CodeWorkbench'
 
 const Courses = () => {
   return (
-    <div className="relative pt-28 pb-20 overflow-x-hidden">
+    <div className="relative pt-28 pb-20">
       {/* Hero Section */}
       <section className="min-h-[50vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
+        <div className="w-full min-w-0 max-w-4xl mx-auto text-center space-y-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -20,7 +20,7 @@ const Courses = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-7xl font-syne font-extrabold tracking-tight text-white uppercase"
+            className="text-page-title font-syne font-extrabold tracking-tight text-white uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -74,17 +74,17 @@ const Courses = () => {
 
       {/* Frontend & Backend Breakdown */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Frontend Module */}
           <motion.div
-            className="glass-card rounded-3xl p-8 border border-white/10 glass-card-hover space-y-6"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="glass-card rounded-3xl p-6 sm:p-8 min-w-0 border border-white/10 glass-card-hover space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center space-x-3 text-[#71D5D9]">
+            <div className="flex flex-wrap items-center gap-3 text-[#71D5D9]">
               <Globe className="w-8 h-8" />
-              <h3 className="text-3xl font-syne font-extrabold text-white">FRONTEND CORE</h3>
+              <h3 className="min-w-0 text-2xl lg:text-3xl font-syne font-extrabold text-white">FRONTEND CORE</h3>
             </div>
             <div className="grid grid-cols-1 gap-3">
               {[
@@ -107,14 +107,14 @@ const Courses = () => {
 
           {/* Backend Module */}
           <motion.div
-            className="glass-card rounded-3xl p-8 border border-white/10 glass-card-hover space-y-6"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="glass-card rounded-3xl p-6 sm:p-8 min-w-0 border border-white/10 glass-card-hover space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center space-x-3 text-[#71D5D9]">
+            <div className="flex flex-wrap items-center gap-3 text-[#71D5D9]">
               <Database className="w-8 h-8" />
-              <h3 className="text-3xl font-syne font-extrabold text-white">BACKEND CORE</h3>
+              <h3 className="min-w-0 text-2xl lg:text-3xl font-syne font-extrabold text-white">BACKEND CORE</h3>
             </div>
             <div className="grid grid-cols-1 gap-3">
               {[

@@ -1,4 +1,5 @@
 ﻿import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { MotionConfig } from 'framer-motion'
 import { CursorProvider } from './components/cursor/CustomCursor'
 import { SmoothScroll } from './components/scroll/SmoothScroll'
 import { ScrollToTop } from './components/scroll/ScrollToTop'
@@ -22,36 +23,39 @@ import Contact from './pages/Contact'
 
 function App() {
   return (
-    <Router>
-      <CursorProvider>
-        <SmoothScroll>
-          <div className="relative min-h-screen bg-[#0A1319] text-[#F4F4F6] overflow-x-hidden">
-            <ScrollToTop />
-            <Navbar />
-            <main className="relative z-10">
-              <PageTransition>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/mernmade" element={<Mernmade />} />
-                  <Route path="/how-it-works" element={<HowItWorks />} />
-                  <Route path="/interview-training" element={<InterviewTraining />} />
-                  <Route path="/communication-training" element={<CommunicationTraining />} />
-                  <Route path="/courses" element={<Courses />} />
-                  <Route path="/batches" element={<Batches />} />
-                  <Route path="/students" element={<Students />} />
-                  <Route path="/teachers" element={<Teachers />} />
-                  <Route path="/apply" element={<Apply />} />
-                  <Route path="/contact" element={<Contact />} />
-                </Routes>
-              </PageTransition>
-            </main>
-            <Footer />
-            <FloatingAssistant />
-          </div>
-        </SmoothScroll>
-      </CursorProvider>
-    </Router>
+    // Honour prefers-reduced-motion for every framer-motion transform (fades still run).
+    <MotionConfig reducedMotion="user">
+      <Router>
+        <CursorProvider>
+          <SmoothScroll>
+            <div className="relative min-h-screen bg-[#0A1319] text-[#F4F4F6]">
+              <ScrollToTop />
+              <Navbar />
+              <main className="relative z-10">
+                <PageTransition>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/mernmade" element={<Mernmade />} />
+                    <Route path="/how-it-works" element={<HowItWorks />} />
+                    <Route path="/interview-training" element={<InterviewTraining />} />
+                    <Route path="/communication-training" element={<CommunicationTraining />} />
+                    <Route path="/courses" element={<Courses />} />
+                    <Route path="/batches" element={<Batches />} />
+                    <Route path="/students" element={<Students />} />
+                    <Route path="/teachers" element={<Teachers />} />
+                    <Route path="/apply" element={<Apply />} />
+                    <Route path="/contact" element={<Contact />} />
+                  </Routes>
+                </PageTransition>
+              </main>
+              <Footer />
+              <FloatingAssistant />
+            </div>
+          </SmoothScroll>
+        </CursorProvider>
+      </Router>
+    </MotionConfig>
   )
 }
 
