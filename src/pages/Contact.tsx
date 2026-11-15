@@ -1,6 +1,7 @@
 ﻿import { motion } from 'framer-motion'
 import { MessageCircle, Mail, Phone, Instagram, ArrowRight, Terminal, Send } from 'lucide-react'
 import { ENQUIRY_INBOX } from '../lib/enquiry'
+import { WHATSAPP_LINK } from '../lib/whatsapp'
 import { useEnquiryForm } from '../components/forms/useEnquiryForm'
 import { FormAlert, FormField, Honeypot, SubmitButton, SuccessPanel } from '../components/forms/Fields'
 
@@ -46,7 +47,7 @@ const Contact = () => {
               icon: MessageCircle,
               title: 'WhatsApp Direct',
               description: 'Instant chat with admissions leads',
-              link: 'https://wa.me/919000000000',
+              link: WHATSAPP_LINK,
               action: 'Open WhatsApp',
             },
             {
@@ -60,7 +61,7 @@ const Contact = () => {
               icon: Phone,
               title: 'Phone Support',
               description: 'Direct call to admissions desk',
-              link: 'tel:+919000000000',
+              link: 'tel:+917994774154',
               action: 'Call Now',
             },
             {

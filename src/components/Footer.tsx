@@ -1,6 +1,7 @@
 ﻿import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { MessageCircle, Mail, Instagram, Phone } from 'lucide-react'
+import { WHATSAPP_LINK } from '../lib/whatsapp'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -80,7 +81,7 @@ const Footer = () => {
             {/* Social Links */}
             <div className="mt-6 flex space-x-4">
               <a
-                href="https://wa.me/917994774154"
+                href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#71D5D9] transition-colors"

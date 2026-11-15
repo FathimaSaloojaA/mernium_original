@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { X, Send, MessageCircle, Sparkles, Terminal } from 'lucide-react'
+import { WHATSAPP_LINK } from '../../lib/whatsapp'
 
 export const FloatingAssistant = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -43,7 +44,7 @@ export const FloatingAssistant = () => {
               </Link>
 
               <a
-                href="https://wa.me/919000000000"
+                href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3 p-2.5 rounded-xl bg-[#3F616A]/20 hover:bg-[#3F616A]/35 text-white border border-[#567B81]/30 transition-all group"
